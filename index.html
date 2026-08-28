@@ -13,98 +13,78 @@
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             color: #4a4a4a;
             overflow-x: hidden;
-            /* Animated Pastel Liquid Gradient */
+            /* Animated Pastel Gradient */
             background: linear-gradient(-45deg, #fbc2eb, #e6dee9, #ff9a9e, #fecfef);
             background-size: 400% 400%;
-            animation: liquidBG 15s ease infinite;
+            animation: bgShift 15s ease infinite;
         }
 
-        @keyframes liquidBG {
+        @keyframes bgShift {
             0% { background-position: 0% 50%; }
             50% { background-position: 100% 50%; }
             100% { background-position: 0% 50%; }
         }
 
-        /* --- RESPONSIVE GRID LAYOUT --- */
+        /* --- RESPONSIVE SCROLLABLE GRID --- */
         .layout-grid {
             display: grid;
-            grid-template-columns: 1fr; /* Mobile default: 1 column */
-            gap: 2rem;
+            grid-template-columns: 1fr; /* Mobile: 1 column so it scrolls easily */
+            gap: 1rem;
             max-width: 1300px;
             margin: 0 auto;
+            padding-bottom: 5rem; /* Extra space at the bottom for scrolling */
         }
 
         @media (min-width: 1000px) {
             .layout-grid {
-                grid-template-columns: 1fr 1fr 1.2fr; /* Desktop: 3 columns */
+                grid-template-columns: 1fr 1fr 1.2fr; /* Desktop: 3 scattered columns */
                 gap: 2.5rem;
             }
-            .col-2 { margin-top: 2rem; }
-            .col-3 { margin-top: 4rem; }
+            .col-2 { margin-top: 4rem; }
+            .col-3 { margin-top: 8rem; }
         }
 
-        /* --- LIQUID GLASS UI CARDS --- */
-        .glass-card {
-            background: rgba(255, 255, 255, 0.4);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            border: 1px solid rgba(255, 255, 255, 0.6);
-            border-radius: 20px;
-            padding: 2rem;
+        /* --- NO GLASS, JUST FLOATING TEXT --- */
+        .text-card {
+            padding: 1.5rem;
             margin-bottom: 2rem;
-            box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.1);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            transition: transform 0.3s ease;
         }
 
-        .glass-card:hover {
+        .text-card:hover {
             transform: translateY(-5px);
-            box-shadow: 0 12px 40px 0 rgba(31, 38, 135, 0.15);
         }
 
         /* --- TYPOGRAPHY & COLORS --- */
-        h1 {
-            font-size: 2.8rem;
-            margin: 0.5rem 0;
-            line-height: 1.1;
-        }
-        
-        .highlight-pink { color: #ff6b8b; }
-        .highlight-purple { color: #8a4baf; font-size: 2rem; margin-top: 0; }
-        
-        h2 { font-size: 1.8rem; margin: 0.5rem 0; }
-        
-        p {
-            line-height: 1.6;
-            font-size: 1.05rem;
-            margin: 0.8rem 0;
-        }
-        
-        .small-text {
-            font-size: 0.9rem;
-            opacity: 0.7;
-            font-style: italic;
-        }
+        h1 { font-size: 2.8rem; margin: 0.5rem 0; line-height: 1.1; color: #333; }
+        .highlight-pink { color: #ff5277; font-size: 3.5rem; }
+        .highlight-purple { color: #783ba3; font-size: 2.2rem; margin-top: 0; }
+        h2 { font-size: 1.8rem; margin: 0.5rem 0; color: #444; }
+        p { line-height: 1.6; font-size: 1.1rem; margin: 0.8rem 0; }
+        .small-text { font-size: 0.95rem; opacity: 0.7; font-style: italic; }
 
-        /* --- INTERACTIVE BUTTONS --- */
+        /* --- SURPRISE BUTTONS --- */
         .cute-btn {
-            background: rgba(255, 255, 255, 0.5);
-            border: 1px solid rgba(255, 107, 139, 0.4);
-            padding: 10px 18px;
+            background: transparent;
+            border: 2px solid #ff5277;
+            padding: 10px 20px;
             border-radius: 30px;
             cursor: pointer;
             font-family: inherit;
-            font-size: 0.95rem;
-            color: #ff6b8b;
+            font-size: 1rem;
+            color: #ff5277;
             font-weight: bold;
-            margin-top: 10px;
-            transition: all 0.3s ease;
-            backdrop-filter: blur(5px);
+            margin-top: 15px;
+            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275); /* Bouncy transition */
+            position: relative;
+            overflow: hidden;
         }
 
         .cute-btn:hover {
-            background: rgba(255, 107, 139, 0.8);
+            background: #ff5277;
             color: white;
-            transform: scale(1.05);
+            transform: scale(1.08) rotate(-2deg);
+            box-shadow: 0 10px 20px rgba(255, 82, 119, 0.3);
         }
 
         .emoji-flex { display: flex; gap: 15px; margin-bottom: 1.5rem; }
@@ -129,25 +109,25 @@
         
         <!-- COLUMN 1 -->
         <div class="col-1">
-            <div class="glass-card">
+            <div class="text-card">
                 <p class="small-text">ok before you scroll past this...<br>it's kind of important</p>
                 <h1>i made you<br>a little<br>something,</h1>
                 <h1 class="highlight-pink">Cutie</h1>
                 <button class="cute-btn" id="poke-btn">🎁 poke it ➔</button>
             </div>
 
-            <div class="glass-card">
+            <div class="text-card">
                 <p class="small-text">circled in my calendar since january, obviously</p>
-                <p style="font-weight: bold; color: #8a4baf;">14 sept</p>
+                <p style="font-weight: bold; color: #783ba3; font-size: 1.2rem;">14 sept</p>
                 <h2>happy birthday<br>Devashree !!</h2>
-                <p>yes i know it's not a fancy website with a countdown timer or whatever. i just wanted to make you something myself instead of buying a card lol</p>
-                <button class="cute-btn" onclick="window.scrollBy({top: 300, behavior: 'smooth'})">keep scrolling ↓</button>
+                <p>khup yede chade lagle he banvayla ani yes i know it's not a fancy website with a countdown timer or whatever. i just wanted to make you something myself instead of buying a card lol</p>
+                <button class="cute-btn" id="scroll-btn">keep scrolling ↓</button>
             </div>
         </div>
 
         <!-- COLUMN 2 -->
         <div class="col-2">
-            <div class="glass-card">
+            <div class="text-card">
                 <p class="small-text">random things about you i was thinking about while making this</p>
                 <h2 class="highlight-purple">a few things,<br>off the top of my head</h2>
                 
@@ -162,7 +142,7 @@
                 </div>
             </div>
 
-            <div class="glass-card">
+            <div class="text-card">
                 <p class="small-text">ok this part's just for fun, humor me</p>
                 <h2>pop these, i hid something in there</h2>
                 <button class="cute-btn" id="cake-btn">alright, cake time ↓</button>
@@ -171,12 +151,12 @@
 
         <!-- COLUMN 3 -->
         <div class="col-3">
-            <div class="glass-card" style="display: flex; gap: 20px; align-items: center;">
-                <div style="text-align: center; border-right: 1px solid rgba(0,0,0,0.1); padding-right: 20px;">
+            <div class="text-card" id="candle-section" style="display: flex; gap: 20px; align-items: center;">
+                <div style="text-align: center; border-right: 2px dashed rgba(255, 82, 119, 0.3); padding-right: 20px;">
                     <p class="small-text" style="margin:0;">make an actual wish, i'll wait</p>
-                    <p style="font-weight:bold; margin: 10px 0;">blow these out</p>
-                    <div id="candle" style="font-size: 2rem; margin-bottom: 10px;">🎂</div>
-                    <button class="cute-btn" id="blow-btn" style="font-size: 0.8rem; padding: 5px 10px;">blow ↓</button>
+                    <p style="font-weight:bold; margin: 10px 0; color:#783ba3;">blow these out</p>
+                    <div id="candle" style="font-size: 3rem; margin-bottom: 10px; transition: all 0.5s;">🎂</div>
+                    <button class="cute-btn" id="blow-btn" style="font-size: 0.9rem; padding: 8px 15px;">blow ↓</button>
                     <p class="small-text" style="margin-top: 5px;">(tap the button)</p>
                 </div>
                 <div>
@@ -184,46 +164,40 @@
                 </div>
             </div>
 
-            <div class="glass-card">
-                <p>happy birthday, Devashree. i know this page is a little silly and definitely not professional-looking, but i wanted to make you something with my own two hands instead of just texting "hbd" like everyone else does.</p>
+            <div class="text-card">
+                <p>happy birthday, Devashree (Deu). i know this page is a little silly and definitely not professional-looking, but i wanted to make you something with my own two hands instead of just texting "hbd" like everyone else does.</p>
                 <p>i hope this year gives you everything you don't even know you're hoping for — good people, less stress, more of those laughs that make your stomach hurt, and days that actually feel like yours. you deserve a genuinely good year, Cutie, not just a good day.</p>
-                <p>thanks for being you. don't change that part.</p>
-                <p style="margin-top: 2rem; font-weight: bold; color: #8a4baf;">— Jayu</p>
+                <p>thanks for being you. don't change that part (lummu mazi cutie) .</p>
+                <p style="margin-top: 2rem; font-weight: bold; color: #783ba3; font-size: 1.2rem;">— Jayu</p>
                 <button class="cute-btn" id="more-time-btn">one more time 🎉</button>
-                <p class="small-text" style="margin-top: 2rem;">made by <span class="highlight-pink">Jayu</span> (Jayostu Patil)</p>
+                <p class="small-text" style="margin-top: 2rem;">made by <span class="highlight-pink" style="font-size:1rem;">Jayu</span> (Jayostu Patil)</p>
             </div>
         </div>
 
     </div>
 
-    <!-- --- JAVASCRIPT / UI LOGIC --- -->
+    <!-- --- JAVASCRIPT / SURPRISE LOGIC --- -->
     <script>
-        // 1. Blow out the candle logic
-        document.getElementById('blow-btn').addEventListener('click', function() {
-            const candle = document.getElementById('candle');
-            candle.innerHTML = '💨'; // Changes cake to wind puff
-            candle.style.opacity = '0.5';
-            this.innerText = 'yay! ✨';
-        });
-
-        // 2. Simple Confetti System for Buttons
+        // --- Confetti Engine ---
         const canvas = document.getElementById('confetti-canvas');
         const ctx = canvas.getContext('2d');
         canvas.width = window.innerWidth;
         canvas.height = window.innerHeight;
 
         let particles = [];
-        const colors = ['#ff6b8b', '#8a4baf', '#ffffff', '#ff9a9e'];
+        const colors = ['#ff5277', '#783ba3', '#ffffff', '#ff9a9e', '#ffd700'];
 
-        function createConfetti(x, y) {
-            for (let i = 0; i < 50; i++) {
+        function createConfetti(x, y, amount = 50) {
+            for (let i = 0; i < amount; i++) {
                 particles.push({
-                    x: x,
-                    y: y,
-                    r: Math.random() * 6 + 2,
-                    dx: Math.random() * 10 - 5,
-                    dy: Math.random() * -10 - 5,
-                    color: colors[Math.floor(Math.random() * colors.length)]
+                    x: x, y: y,
+                    r: Math.random() * 8 + 3,
+                    dx: Math.random() * 12 - 6,
+                    dy: Math.random() * -15 - 5,
+                    color: colors[Math.floor(Math.random() * colors.length)],
+                    tilt: Math.floor(Math.random() * 10) - 10,
+                    tiltAngleInc: (Math.random() * 0.07) + 0.05,
+                    tiltAngle: 0
                 });
             }
         }
@@ -231,34 +205,81 @@
         function animateConfetti() {
             ctx.clearRect(0, 0, canvas.width, canvas.height);
             particles.forEach((p, index) => {
-                p.dy += 0.3; // gravity
-                p.x += p.dx;
+                p.tiltAngle += p.tiltAngleInc;
+                p.dy += 0.4; // gravity
+                p.x += Math.sin(p.tiltAngle) * 2 + p.dx;
                 p.y += p.dy;
+                
                 ctx.beginPath();
                 ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
                 ctx.fillStyle = p.color;
                 ctx.fill();
+                
                 if (p.y > canvas.height) particles.splice(index, 1);
             });
             requestAnimationFrame(animateConfetti);
         }
-        animateConfetti(); // Start loop
+        animateConfetti(); // Start the loop
 
-        // Attach confetti to specific buttons
-        document.getElementById('poke-btn').addEventListener('click', (e) => {
-            createConfetti(e.clientX, e.clientY);
-        });
-        
-        document.getElementById('more-time-btn').addEventListener('click', (e) => {
-            createConfetti(e.clientX, e.clientY);
-            createConfetti(window.innerWidth / 2, window.innerHeight / 2); // extra burst in middle
-        });
-
-        // Resize canvas if window changes
         window.addEventListener('resize', () => {
             canvas.width = window.innerWidth;
             canvas.height = window.innerHeight;
         });
+
+        // --- SURPRISE 1: Poke Button ---
+        const pokeBtn = document.getElementById('poke-btn');
+        pokeBtn.addEventListener('click', function(e) {
+            createConfetti(e.clientX, e.clientY, 40);
+            this.innerText = "ouch! stop poking! 😆";
+            this.style.transform = "scale(0.9)";
+            setTimeout(() => {
+                this.innerText = "🎁 poke it ➔";
+                this.style.transform = "scale(1)";
+            }, 1500);
+        });
+
+        // --- SURPRISE 2: Keep Scrolling Button ---
+        document.getElementById('scroll-btn').addEventListener('click', function(e) {
+            // Shoots a little confetti and smooth scrolls down
+            createConfetti(e.clientX, e.clientY, 20);
+            window.scrollBy({top: window.innerHeight * 0.7, behavior: 'smooth'});
+            this.innerText = "wheee! 🎢";
+            setTimeout(() => { this.innerText = "keep scrolling ↓"; }, 1000);
+        });
+
+        // --- SURPRISE 3: Cake Time Button ---
+        document.getElementById('cake-btn').addEventListener('click', function(e) {
+            // Scrolls exactly to the candle section
+            document.getElementById('candle-section').scrollIntoView({behavior: 'smooth', block: 'center'});
+            createConfetti(window.innerWidth / 2, window.innerHeight / 2, 60);
+        });
+
+        // --- SURPRISE 4: Blow the Candle Button ---
+        let blownOut = false;
+        document.getElementById('blow-btn').addEventListener('click', function(e) {
+            const candle = document.getElementById('candle');
+            if (!blownOut) {
+                candle.innerHTML = '💨🧁'; // Cake blows away into a cupcake!
+                candle.style.transform = 'scale(1.2)';
+                this.innerText = ' WISH MADE ✨';
+                // MASSIVE confetti explosion from the center
+                createConfetti(window.innerWidth / 2, window.innerHeight / 2, 150);
+                blownOut = true;
+            } else {
+                createConfetti(e.clientX, e.clientY, 30);
+            }
+        });
+
+        // --- SURPRISE 5: One More Time Button ---
+        document.getElementById('more-time-btn').addEventListener('click', function(e) {
+            // Triggers multiple bursts of confetti everywhere!
+            createConfetti(window.innerWidth * 0.2, window.innerHeight * 0.5, 50);
+            createConfetti(window.innerWidth * 0.8, window.innerHeight * 0.5, 50);
+            createConfetti(window.innerWidth * 0.5, window.innerHeight * 0.2, 80);
+            this.innerText = "🎊";
+            setTimeout(() => { this.innerText = "one more time 🎉"; }, 2000);
+        });
+
     </script>
 </body>
 </html>
