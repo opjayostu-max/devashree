@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Happy Birthday Devashree!</title>
+    <title>Happy Birthday Cutie!</title>
     <style>
         /* --- CUTE ANIMATED BACKGROUND --- */
         body {
@@ -29,7 +29,7 @@
         .layout-grid {
             display: grid;
             grid-template-columns: 1fr; /* Mobile: 1 column so it scrolls easily */
-            gap: 1rem;
+            gap: 1.5rem;
             max-width: 1300px;
             margin: 0 auto;
             padding-bottom: 5rem; /* Extra space at the bottom for scrolling */
@@ -44,15 +44,22 @@
             .col-3 { margin-top: 8rem; }
         }
 
-        /* --- NO GLASS, JUST FLOATING TEXT --- */
+        /* --- LIQUID GLASS FLOATING CARDS --- */
         .text-card {
-            padding: 1.5rem;
+            background: rgba(255, 255, 255, 0.4);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.6);
+            border-radius: 20px;
+            padding: 2rem;
             margin-bottom: 2rem;
-            transition: transform 0.3s ease;
+            box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
 
         .text-card:hover {
             transform: translateY(-5px);
+            box-shadow: 0 12px 40px 0 rgba(31, 38, 135, 0.15);
         }
 
         /* --- TYPOGRAPHY & COLORS --- */
@@ -65,7 +72,7 @@
 
         /* --- SURPRISE BUTTONS --- */
         .cute-btn {
-            background: transparent;
+            background: rgba(255, 255, 255, 0.5);
             border: 2px solid #ff5277;
             padding: 10px 20px;
             border-radius: 30px;
@@ -75,6 +82,7 @@
             color: #ff5277;
             font-weight: bold;
             margin-top: 15px;
+            backdrop-filter: blur(5px);
             transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275); /* Bouncy transition */
             position: relative;
             overflow: hidden;
@@ -119,7 +127,7 @@
             <div class="text-card">
                 <p class="small-text">circled in my calendar since january, obviously</p>
                 <p style="font-weight: bold; color: #783ba3; font-size: 1.2rem;">14 sept</p>
-                <h2>happy birthday<br>Devashree !!</h2>
+                <h2>happy birthday<br>Devashree Manoj Marathe !!</h2>
                 <p>khup yede chade lagle he banvayla ani yes i know it's not a fancy website with a countdown timer or whatever. i just wanted to make you something myself instead of buying a card lol</p>
                 <button class="cute-btn" id="scroll-btn">keep scrolling ↓</button>
             </div>
