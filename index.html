@@ -3,207 +3,29 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>for cutie 🎈</title>
-<meta name="description" content="a little birthday page for Devashree (Cutie), made by Jayu" />
-
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;600;700&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
-
+<title>Happy Birthday Devashree 🎂</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css" />
 </head>
 <body>
 
-<!-- hidden svg filter that gives shapes a hand-drawn wobble -->
-<svg width="0" height="0" style="position:absolute">
-  <filter id="wobble">
-    <feTurbulence type="fractalNoise" baseFrequency="0.012 0.025" numOctaves="2" seed="7" result="noise"/>
-    <feDisplacementMap in="SourceGraphic" in2="noise" scale="5"/>
-  </filter>
-</svg>
-
 <canvas id="confetti-canvas"></canvas>
 
-<!-- a few doodles scattered around, not animated, just placed like stickers -->
-<div class="doodles" aria-hidden="true">
-  <span class="doodle d1">✦</span>
-  <span class="doodle d2">♡</span>
-  <span class="doodle d3">✎</span>
-  <span class="doodle d4">✦</span>
-  <span class="doodle d5">☆</span>
-</div>
+<main class="card">
+  <div class="balloons">🎈🎈🎈</div>
+  <h1>Happy Birthday<br><span>Devashree</span></h1>
+  <p class="nickname">aka Cutie 💛</p>
 
-<main class="page">
+  <p class="message">
+    Wishing you a very Happy Birthday! May God bless you always and
+    make your whole year go smooth and wonderful. May you stay happy,
+    healthy, and surrounded by love every single day. Have a fantastic
+    birthday, Cutie! 🎉
+  </p>
 
-  <!-- ============ TOP NOTE ============ -->
-  <section class="block hero-block">
-    <div class="tape tape-top"></div>
-    <p class="scribble small">okay before you scroll away—</p>
-    <h1 class="handwrite big">hey cutie 👋<br>i made you a lil thing</h1>
-    <p class="scribble">go on, open it. it doesn't bite.</p>
+  <button id="celebrate-btn">🎉 Celebrate</button>
 
-    <button id="gift-btn" class="gift-btn" aria-label="open the gift">
-      <svg class="gift-doodle" viewBox="0 0 180 160" xmlns="http://www.w3.org/2000/svg" filter="url(#wobble)">
-        <rect x="25" y="70" width="130" height="80" rx="4" fill="none" stroke="#33302A" stroke-width="3"/>
-        <line x1="25" y1="95" x2="155" y2="95" stroke="#33302A" stroke-width="3"/>
-        <line x1="90" y1="70" x2="90" y2="150" stroke="#33302A" stroke-width="3"/>
-        <g id="lid" class="lid-group">
-          <rect x="18" y="55" width="144" height="20" rx="4" fill="#FF8FAE" stroke="#33302A" stroke-width="3"/>
-          <path d="M90 55 C 65 20, 35 30, 55 52" fill="none" stroke="#33302A" stroke-width="3"/>
-          <path d="M90 55 C 115 20, 145 30, 125 52" fill="none" stroke="#33302A" stroke-width="3"/>
-        </g>
-      </svg>
-      <span class="tap-label">(tap)</span>
-    </button>
-
-    <svg class="squiggle-arrow" viewBox="0 0 120 60" width="80">
-      <path d="M5 5 C 40 5, 20 55, 60 50 S 90 20, 115 45" fill="none" stroke="#E85D4E" stroke-width="3" stroke-linecap="round"/>
-    </svg>
-  </section>
-
-  <!-- ============ DATE / POLAROID ============ -->
-  <section class="block reveal-block">
-    <div class="polaroid">
-      <div class="tape tape-corner"></div>
-      <div class="polaroid-photo">
-        <span class="polaroid-number">14</span>
-        <span class="polaroid-month">SEPT</span>
-      </div>
-      <p class="polaroid-caption handwrite">devashree's day ★</p>
-    </div>
-    <p class="scribble center-text">yep. it's finally here. mark your calendar,<br>tell your friends, tell strangers, i don't care —<br>today is officially <span class="marker-pink">Cutie's Birthday.</span></p>
-  </section>
-
-  <!-- ============ REASONS / CORKBOARD ============ -->
-  <section class="block reasons-block">
-    <p class="scribble small center-text">a few (very scientific) notes i jotted down about you</p>
-    <h2 class="handwrite mid center-text">reasons you're kind of<br>the best person i know</h2>
-
-    <div class="corkboard">
-      <div class="index-card rot-1" data-flip>
-        <div class="card-face card-front">
-          <span class="pin"></span>
-          <span class="card-num">01</span>
-          <p>your smile</p>
-        </div>
-        <div class="card-face card-back">
-          <p>it's unfairly contagious. everyone in the room catches it.</p>
-        </div>
-      </div>
-
-      <div class="index-card rot-2" data-flip>
-        <div class="card-face card-front">
-          <span class="pin"></span>
-          <span class="card-num">02</span>
-          <p>your vibe</p>
-        </div>
-        <div class="card-face card-back">
-          <p>you make people feel at home in about two minutes flat.</p>
-        </div>
-      </div>
-
-      <div class="index-card rot-3" data-flip>
-        <div class="card-face card-front">
-          <span class="pin"></span>
-          <span class="card-num">03</span>
-          <p>your strength</p>
-        </div>
-        <div class="card-face card-back">
-          <p>more than you give yourself credit for. i've seen it.</p>
-        </div>
-      </div>
-
-      <div class="index-card rot-4" data-flip>
-        <div class="card-face card-front">
-          <span class="pin"></span>
-          <span class="card-num">04</span>
-          <p>your eye for things</p>
-        </div>
-        <div class="card-face card-back">
-          <p>you notice the little details everyone else walks past.</p>
-        </div>
-      </div>
-
-      <div class="index-card rot-5" data-flip>
-        <div class="card-face card-front">
-          <span class="pin"></span>
-          <span class="card-num">05</span>
-          <p>just... you</p>
-        </div>
-        <div class="card-face card-back">
-          <p>loved way more than you realize. don't forget that.</p>
-        </div>
-      </div>
-    </div>
-    <p class="scribble small center-text">(tap the cards, i dare you)</p>
-  </section>
-
-  <!-- ============ BALLOON GAME ============ -->
-  <section class="block balloons-block">
-    <p class="scribble small center-text">one tiny mission before cake —</p>
-    <h2 class="handwrite mid center-text">pop these to unlock<br>a secret message</h2>
-
-    <div class="progress-track"><div class="progress-fill" id="balloon-progress"></div></div>
-
-    <div class="balloon-field" id="balloon-field"></div>
-
-    <p id="balloon-message" class="secret-message handwrite"></p>
-    <button class="ink-btn hidden" id="to-cake-btn" data-next="cake-block">okay, to the cake →</button>
-  </section>
-
-  <!-- ============ CAKE ============ -->
-  <section id="cake-block" class="block cake-block">
-    <p class="scribble small center-text">make a wish first, i mean it</p>
-    <h2 class="handwrite mid center-text">blow out the candles</h2>
-
-    <svg id="cake-svg" viewBox="0 0 240 190" width="240" filter="url(#wobble)">
-      <path d="M20 175 Q120 190 220 175 L215 130 Q120 145 25 130 Z" fill="#FFD9E8" stroke="#33302A" stroke-width="3"/>
-      <path d="M35 130 Q120 145 205 130 L200 95 Q120 108 40 95 Z" fill="#FFD966" stroke="#33302A" stroke-width="3"/>
-      <path d="M55 95 Q120 106 185 95 L180 65 Q120 75 60 65 Z" fill="#9FD8E8" stroke="#33302A" stroke-width="3"/>
-      <g class="candle" data-candle="1">
-        <line x1="80" y1="65" x2="80" y2="40" stroke="#33302A" stroke-width="3"/>
-        <path class="flame" d="M80 40 Q75 32 80 24 Q85 32 80 40 Z" fill="#FF8FAE" stroke="#33302A" stroke-width="2"/>
-      </g>
-      <g class="candle" data-candle="2">
-        <line x1="120" y1="65" x2="120" y2="32" stroke="#33302A" stroke-width="3"/>
-        <path class="flame" d="M120 32 Q115 24 120 16 Q125 24 120 32 Z" fill="#FF8FAE" stroke="#33302A" stroke-width="2"/>
-      </g>
-      <g class="candle" data-candle="3">
-        <line x1="160" y1="65" x2="160" y2="40" stroke="#33302A" stroke-width="3"/>
-        <path class="flame" d="M160 40 Q155 32 160 24 Q165 32 160 40 Z" fill="#FF8FAE" stroke="#33302A" stroke-width="2"/>
-      </g>
-    </svg>
-
-    <button id="blow-btn" class="ink-btn">blow them out 💨</button>
-    <p class="scribble small center-text" id="cake-hint">(tap when you've made your wish)</p>
-  </section>
-
-  <!-- ============ FINAL LETTER ============ -->
-  <section id="message" class="block letter-block">
-    <div class="tape tape-top2"></div>
-    <p class="handwrite letterhead">dear devashree,</p>
-
-    <p class="letter-text">
-      today isn't just another square on the calendar. it's the day the world got a bit
-      louder, a bit kinder, and a lot more fun — because it got <em>you</em>. i hope this
-      year hands you everything that makes you laugh the annoying-loud way, people who
-      actually get you, and enough good days to match how good you've been to everyone
-      around you.
-    </p>
-    <p class="letter-text">
-      don't ever tone yourself down for anyone. the world's genuinely better with your
-      chaos in it. happy birthday, cutie — here's to another year of you being, well, you. 🎈
-    </p>
-
-    <p class="signature handwrite">— jayu</p>
-
-    <button id="replay-btn" class="ink-btn ghost">throw confetti again 🎉</button>
-  </section>
-
-  <footer class="footer">
-    made by <strong>jayu</strong> <span class="muted">(jayostu patil)</span>
-  </footer>
-
+  <footer>Made by Jayu (Jayostu Patil)</footer>
 </main>
 
 <script src="script.js"></script>
