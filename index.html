@@ -5,145 +5,169 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Happy Birthday Devashree!</title>
     <style>
-        /* Cute pastel background */
+        /* Base styling matching your original soft gradient */
         body {
             margin: 0;
             padding: 2rem;
             min-height: 100vh;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: linear-gradient(135deg, #fdfbfb 0%, #ebedee 100%);
-            /* Liquid cute gradient overlay */
-            background-image: 
-                radial-gradient(at 0% 0%, hsla(253,16%,7%,0) 0, transparent 50%), 
-                radial-gradient(at 50% 0%, hsla(225,39%,30%,0) 0, transparent 50%), 
-                radial-gradient(at 100% 0%, hsla(339,100%,88%,1) 0, transparent 50%), 
-                radial-gradient(at 0% 100%, hsla(22,100%,77%,1) 0, transparent 50%), 
-                radial-gradient(at 50% 100%, hsla(242,100%,88%,1) 0, transparent 50%), 
-                radial-gradient(at 100% 100%, hsla(271,74%,81%,1) 0, transparent 50%);
-            background-attachment: fixed;
-            color: #4a4a4a;
+            font-family: Arial, Helvetica, sans-serif;
+            background: linear-gradient(135deg, #fdf4f4 0%, #f4e8fb 50%, #e6e6fa 100%);
+            color: #333;
+            overflow-x: hidden;
         }
 
-        /* Container to hold all the glass cards */
-        .glass-container {
+        /* The container that handles the layout */
+        .layout-grid {
             display: grid;
-            grid-template-columns: 1fr; /* Mobile default: 1 column */
-            gap: 1.5rem;
-            max-width: 1200px;
+            grid-template-columns: 1fr; /* Mobile: 1 single column */
+            gap: 3rem;
+            max-width: 1400px;
             margin: 0 auto;
         }
 
-        /* Liquid Glass Card Effect */
-        .glass-card {
-            background: rgba(255, 255, 255, 0.4);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            border: 1px solid rgba(255, 255, 255, 0.6);
-            border-radius: 20px;
-            padding: 2rem;
-            box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.1);
-            transition: transform 0.3s ease;
+        /* Desktop: 3 scattered columns just like your screenshot */
+        @media (min-width: 1000px) {
+            .layout-grid {
+                grid-template-columns: 1fr 1fr 1.2fr;
+                gap: 2rem;
+            }
+            /* Staggering columns to match the scattered look */
+            .col-2 {
+                margin-top: -20px;
+            }
+            .col-3 {
+                margin-top: 60px;
+            }
         }
 
-        .glass-card:hover {
-            transform: translateY(-5px);
+        /* Text Block Styling */
+        .text-block {
+            margin-bottom: 3rem;
         }
 
-        /* Typography Styling */
         h1 {
-            color: #ff6b81; /* Cute pink for main headers */
-            margin-top: 0;
-            font-size: 2.2rem;
+            font-size: 3rem;
+            margin: 0.5rem 0;
+            color: #444;
         }
-        
-        h2 {
-            color: #70a1ff; /* Soft blue for secondary headers */
-            font-size: 1.5rem;
+
+        .highlight-pink {
+            color: #ff6b8b;
+            font-size: 3.5rem;
+            margin: 0;
+        }
+
+        .highlight-purple {
+            color: #4a3b69;
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
         }
 
         p {
-            line-height: 1.6;
+            line-height: 1.5;
             font-size: 1.1rem;
+            margin: 0.8rem 0;
         }
 
         .small-text {
-            font-size: 0.9rem;
-            opacity: 0.8;
-            font-style: italic;
+            font-size: 0.95rem;
+            color: #555;
         }
 
-        /* Desktop Layout Override */
-        @media (min-width: 768px) {
-            .glass-container {
-                grid-template-columns: repeat(2, 1fr); /* 2 columns for tablets/small desktops */
-            }
-        }
-
-        @media (min-width: 1024px) {
-            .glass-container {
-                grid-template-columns: repeat(3, 1fr); /* 3 columns for large screens */
-            }
-            /* Make the final message span all columns at the bottom */
-            .wide-card {
-                grid-column: 1 / -1; 
-            }
-        }
-
-        /* Interactive Button Style */
-        .cute-button {
-            background: rgba(255, 107, 129, 0.8);
-            color: white;
-            border: none;
-            padding: 10px 20px;
-            border-radius: 30px;
+        /* Interactive element styling (matching your screenshot) */
+        .simple-btn {
+            background: transparent;
+            border: 1px solid #999;
+            padding: 8px 12px;
             cursor: pointer;
-            font-weight: bold;
-            margin-top: 10px;
-            transition: background 0.3s ease;
+            font-family: inherit;
+            font-size: 0.9rem;
+            margin-top: 5px;
+            display: inline-block;
+        }
+        
+        .simple-btn:hover {
+            background: rgba(255,255,255,0.5);
         }
 
-        .cute-button:hover {
-            background: rgba(255, 107, 129, 1);
+        .emoji-list p {
+            display: flex;
+            gap: 10px;
+            align-items: flex-start;
+        }
+
+        .scattered-text {
+            padding-left: 20px;
+            margin-top: 2rem;
         }
     </style>
 </head>
 <body>
 
-    <div class="glass-container">
+    <div class="layout-grid">
         
-        <!-- Card 1 -->
-        <div class="glass-card">
-            <p class="small-text">ok before you scroll past this... it's kind of important</p>
-            <h1>i made you a little something, <br>Cutie</h1>
-            <button class="cute-button">🎁 poke it</button>
+        <!-- COLUMN 1: The Left Side -->
+        <div class="col-1">
+            <div class="text-block">
+                <p class="small-text">ok before you scroll past this...<br>it's kind of important</p>
+                <h1>i made you<br>a little<br>something,</h1>
+                <h1 class="highlight-pink">Cutie</h1>
+                <button class="simple-btn">🎁 poke it ➔</button>
+            </div>
+
+            <div class="text-block" style="margin-top: 5rem;">
+                <p class="small-text">circled in my calendar since january,<br>obviously</p>
+                <p style="font-weight: bold; margin-bottom: 0;">14 sept</p>
+                <h2 style="font-size: 1.8rem; margin-top: 0.5rem;">happy birthday<br>Devashree !!</h2>
+                <p class="small-text" style="max-width: 250px;">yes i know it's not a fancy website with a countdown timer or whatever. i just wanted to make you something myself instead of buying a card lol</p>
+                <button class="simple-btn">keep scrolling ↓</button>
+            </div>
         </div>
 
-        <!-- Card 2 -->
-        <div class="glass-card">
-            <p class="small-text">circled in my calendar since january, obviously</p>
-            <h2>14 sept <br> happy birthday Devashree !!</h2>
-            <p>yes i know it's not a fancy website with a countdown timer or whatever. i just wanted to make you something myself instead of buying a card lol</p>
+        <!-- COLUMN 2: The Middle Area -->
+        <div class="col-2">
+            <div class="text-block">
+                <p class="small-text">random things about<br>you i was thinking<br>about while making<br>this</p>
+                <h2 class="highlight-purple">a few things,<br>off the top of<br>my head</h2>
+                
+                <div class="emoji-list">
+                    <p><span>😄</span> <span>this one's easy<br><br>your smile is honestly contagious, it's not fair to the rest of us</span></p>
+                    <p><span>🤗</span> <span>flip me<br><br>you make people feel comfortable without even trying</span></p>
+                    <p><span>💪</span> <span>ok this one's real<br><br>you handle way more than people realize, and you're still kind about it</span></p>
+                    <p><span>🌸</span> <span>tap here</span></p>
+                </div>
+            </div>
+
+            <div class="text-block scattered-text">
+                <p class="small-text">ok this part's just<br>for fun, humor<br>me</p>
+                <h2 style="font-size: 1.6rem; margin: 0.5rem 0;">pop these,<br>i hid<br>something<br>in there</h2>
+                <button class="simple-btn">alright, cake time ↓</button>
+            </div>
         </div>
 
-        <!-- Card 3 -->
-        <div class="glass-card">
-            <h2>a few things, off the top of my head</h2>
-            <p>😄 this one's easy</p>
-            <p>your smile is honestly contagious, it's not fair to the rest of us</p>
-            <p>🤗 flip me</p>
-            <p>you make people feel comfortable without even trying</p>
-            <p>💪 ok this one's real</p>
-            <p>you handle way more than people realize, and you're still kind about it</p>
-        </div>
+        <!-- COLUMN 3: The Right Side -->
+        <div class="col-3">
+            <div class="text-block">
+                <div style="display: flex; gap: 15px; margin-bottom: 2rem; font-weight: bold; font-size: 1.2rem;">
+                    <div style="text-align: right;">
+                        <span style="font-weight: normal; font-size: 0.9rem;">make an<br>actual<br>wish, i'll<br>wait</span><br>
+                        blow<br>these<br>out<br>
+                        🎂<br>
+                        <button class="simple-btn" style="font-size: 0.8rem;">blow ↓</button><br>
+                        <span style="font-weight: normal; font-size: 0.8rem;">(tap the<br>button)</span>
+                    </div>
+                    <div>
+                        <h2>ok, for real now —</h2>
+                    </div>
+                </div>
 
-        <!-- Card 4 (Full Width on Desktop) -->
-        <div class="glass-card wide-card">
-            <h2>ok, for real now —</h2>
-            <p>happy birthday, Devashree. i know this page is a little silly and definitely not professional-looking, but i wanted to make you something with my own two hands instead of just texting "hbd" like everyone else does.</p>
-            <p>i hope this year gives you everything you don't even know you're hoping for — good people, less stress, more of those laughs that make your stomach hurt, and days that actually feel like yours. you deserve a genuinely good year, Cutie, not just a good day.</p>
-            <p>thanks for being you. don't change that part.</p>
-            <br>
-            <p><strong>— Jayu (Jayostu Patil)</strong></p>
+                <p class="small-text">happy birthday, Devashree. i know this page is a little silly and definitely not professional-looking, but i wanted to make you something with my own two hands instead of just texting "hbd" like everyone else does.</p>
+                <p class="small-text">i hope this year gives you everything you don't even know you're hoping for — good people, less stress, more of those laughs that make your stomach hurt, and days that actually feel like yours. you deserve a genuinely good year, Cutie, not just a good day.</p>
+                <p class="small-text">thanks for being you. don't change that part.</p>
+                <p style="margin-top: 1.5rem;">— Jayu</p>
+                <button class="simple-btn" style="margin-left: 2rem;">one more time 🎉</button>
+                <p style="color: #999; font-size: 0.8rem; margin-top: 2rem;">made by <span style="color: #ff6b8b;">Jayu</span> (Jayostu Patil)</p>
+            </div>
         </div>
 
     </div>
