@@ -5,172 +5,260 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Happy Birthday Devashree!</title>
     <style>
-        /* Base styling matching your original soft gradient */
+        /* --- CUTE ANIMATED BACKGROUND --- */
         body {
             margin: 0;
             padding: 2rem;
             min-height: 100vh;
-            font-family: Arial, Helvetica, sans-serif;
-            background: linear-gradient(135deg, #fdf4f4 0%, #f4e8fb 50%, #e6e6fa 100%);
-            color: #333;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: #4a4a4a;
             overflow-x: hidden;
+            /* Animated Pastel Liquid Gradient */
+            background: linear-gradient(-45deg, #fbc2eb, #e6dee9, #ff9a9e, #fecfef);
+            background-size: 400% 400%;
+            animation: liquidBG 15s ease infinite;
         }
 
-        /* The container that handles the layout */
+        @keyframes liquidBG {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        /* --- RESPONSIVE GRID LAYOUT --- */
         .layout-grid {
             display: grid;
-            grid-template-columns: 1fr; /* Mobile: 1 single column */
-            gap: 3rem;
-            max-width: 1400px;
+            grid-template-columns: 1fr; /* Mobile default: 1 column */
+            gap: 2rem;
+            max-width: 1300px;
             margin: 0 auto;
         }
 
-        /* Desktop: 3 scattered columns just like your screenshot */
         @media (min-width: 1000px) {
             .layout-grid {
-                grid-template-columns: 1fr 1fr 1.2fr;
-                gap: 2rem;
+                grid-template-columns: 1fr 1fr 1.2fr; /* Desktop: 3 columns */
+                gap: 2.5rem;
             }
-            /* Staggering columns to match the scattered look */
-            .col-2 {
-                margin-top: -20px;
-            }
-            .col-3 {
-                margin-top: 60px;
-            }
+            .col-2 { margin-top: 2rem; }
+            .col-3 { margin-top: 4rem; }
         }
 
-        /* Text Block Styling */
-        .text-block {
-            margin-bottom: 3rem;
+        /* --- LIQUID GLASS UI CARDS --- */
+        .glass-card {
+            background: rgba(255, 255, 255, 0.4);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.6);
+            border-radius: 20px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
 
+        .glass-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 40px 0 rgba(31, 38, 135, 0.15);
+        }
+
+        /* --- TYPOGRAPHY & COLORS --- */
         h1 {
-            font-size: 3rem;
+            font-size: 2.8rem;
             margin: 0.5rem 0;
-            color: #444;
-        }
-
-        .highlight-pink {
-            color: #ff6b8b;
-            font-size: 3.5rem;
-            margin: 0;
-        }
-
-        .highlight-purple {
-            color: #4a3b69;
-            font-size: 2rem;
-            margin-bottom: 1.5rem;
-        }
-
-        p {
-            line-height: 1.5;
-            font-size: 1.1rem;
-            margin: 0.8rem 0;
-        }
-
-        .small-text {
-            font-size: 0.95rem;
-            color: #555;
-        }
-
-        /* Interactive element styling (matching your screenshot) */
-        .simple-btn {
-            background: transparent;
-            border: 1px solid #999;
-            padding: 8px 12px;
-            cursor: pointer;
-            font-family: inherit;
-            font-size: 0.9rem;
-            margin-top: 5px;
-            display: inline-block;
+            line-height: 1.1;
         }
         
-        .simple-btn:hover {
-            background: rgba(255,255,255,0.5);
+        .highlight-pink { color: #ff6b8b; }
+        .highlight-purple { color: #8a4baf; font-size: 2rem; margin-top: 0; }
+        
+        h2 { font-size: 1.8rem; margin: 0.5rem 0; }
+        
+        p {
+            line-height: 1.6;
+            font-size: 1.05rem;
+            margin: 0.8rem 0;
+        }
+        
+        .small-text {
+            font-size: 0.9rem;
+            opacity: 0.7;
+            font-style: italic;
         }
 
-        .emoji-list p {
-            display: flex;
-            gap: 10px;
-            align-items: flex-start;
+        /* --- INTERACTIVE BUTTONS --- */
+        .cute-btn {
+            background: rgba(255, 255, 255, 0.5);
+            border: 1px solid rgba(255, 107, 139, 0.4);
+            padding: 10px 18px;
+            border-radius: 30px;
+            cursor: pointer;
+            font-family: inherit;
+            font-size: 0.95rem;
+            color: #ff6b8b;
+            font-weight: bold;
+            margin-top: 10px;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(5px);
         }
 
-        .scattered-text {
-            padding-left: 20px;
-            margin-top: 2rem;
+        .cute-btn:hover {
+            background: rgba(255, 107, 139, 0.8);
+            color: white;
+            transform: scale(1.05);
+        }
+
+        .emoji-flex { display: flex; gap: 15px; margin-bottom: 1.5rem; }
+        .emoji-flex span:first-child { font-size: 1.5rem; }
+
+        /* Confetti Canvas */
+        #confetti-canvas {
+            position: fixed;
+            top: 0; left: 0;
+            width: 100vw; height: 100vh;
+            pointer-events: none;
+            z-index: 9999;
         }
     </style>
 </head>
 <body>
 
+    <!-- Canvas for JavaScript Confetti -->
+    <canvas id="confetti-canvas"></canvas>
+
     <div class="layout-grid">
         
-        <!-- COLUMN 1: The Left Side -->
+        <!-- COLUMN 1 -->
         <div class="col-1">
-            <div class="text-block">
+            <div class="glass-card">
                 <p class="small-text">ok before you scroll past this...<br>it's kind of important</p>
                 <h1>i made you<br>a little<br>something,</h1>
                 <h1 class="highlight-pink">Cutie</h1>
-                <button class="simple-btn">🎁 poke it ➔</button>
+                <button class="cute-btn" id="poke-btn">🎁 poke it ➔</button>
             </div>
 
-            <div class="text-block" style="margin-top: 5rem;">
-                <p class="small-text">circled in my calendar since january,<br>obviously</p>
-                <p style="font-weight: bold; margin-bottom: 0;">14 sept</p>
-                <h2 style="font-size: 1.8rem; margin-top: 0.5rem;">happy birthday<br>Devashree !!</h2>
-                <p class="small-text" style="max-width: 250px;">yes i know it's not a fancy website with a countdown timer or whatever. i just wanted to make you something myself instead of buying a card lol</p>
-                <button class="simple-btn">keep scrolling ↓</button>
+            <div class="glass-card">
+                <p class="small-text">circled in my calendar since january, obviously</p>
+                <p style="font-weight: bold; color: #8a4baf;">14 sept</p>
+                <h2>happy birthday<br>Devashree !!</h2>
+                <p>yes i know it's not a fancy website with a countdown timer or whatever. i just wanted to make you something myself instead of buying a card lol</p>
+                <button class="cute-btn" onclick="window.scrollBy({top: 300, behavior: 'smooth'})">keep scrolling ↓</button>
             </div>
         </div>
 
-        <!-- COLUMN 2: The Middle Area -->
+        <!-- COLUMN 2 -->
         <div class="col-2">
-            <div class="text-block">
-                <p class="small-text">random things about<br>you i was thinking<br>about while making<br>this</p>
-                <h2 class="highlight-purple">a few things,<br>off the top of<br>my head</h2>
+            <div class="glass-card">
+                <p class="small-text">random things about you i was thinking about while making this</p>
+                <h2 class="highlight-purple">a few things,<br>off the top of my head</h2>
                 
-                <div class="emoji-list">
-                    <p><span>😄</span> <span>this one's easy<br><br>your smile is honestly contagious, it's not fair to the rest of us</span></p>
-                    <p><span>🤗</span> <span>flip me<br><br>you make people feel comfortable without even trying</span></p>
-                    <p><span>💪</span> <span>ok this one's real<br><br>you handle way more than people realize, and you're still kind about it</span></p>
-                    <p><span>🌸</span> <span>tap here</span></p>
+                <div class="emoji-flex">
+                    <span>😄</span> <div><strong>this one's easy</strong><br>your smile is honestly contagious, it's not fair to the rest of us</div>
+                </div>
+                <div class="emoji-flex">
+                    <span>🤗</span> <div><strong>flip me</strong><br>you make people feel comfortable without even trying</div>
+                </div>
+                <div class="emoji-flex">
+                    <span>💪</span> <div><strong>ok this one's real</strong><br>you handle way more than people realize, and you're still kind about it</div>
                 </div>
             </div>
 
-            <div class="text-block scattered-text">
-                <p class="small-text">ok this part's just<br>for fun, humor<br>me</p>
-                <h2 style="font-size: 1.6rem; margin: 0.5rem 0;">pop these,<br>i hid<br>something<br>in there</h2>
-                <button class="simple-btn">alright, cake time ↓</button>
+            <div class="glass-card">
+                <p class="small-text">ok this part's just for fun, humor me</p>
+                <h2>pop these, i hid something in there</h2>
+                <button class="cute-btn" id="cake-btn">alright, cake time ↓</button>
             </div>
         </div>
 
-        <!-- COLUMN 3: The Right Side -->
+        <!-- COLUMN 3 -->
         <div class="col-3">
-            <div class="text-block">
-                <div style="display: flex; gap: 15px; margin-bottom: 2rem; font-weight: bold; font-size: 1.2rem;">
-                    <div style="text-align: right;">
-                        <span style="font-weight: normal; font-size: 0.9rem;">make an<br>actual<br>wish, i'll<br>wait</span><br>
-                        blow<br>these<br>out<br>
-                        🎂<br>
-                        <button class="simple-btn" style="font-size: 0.8rem;">blow ↓</button><br>
-                        <span style="font-weight: normal; font-size: 0.8rem;">(tap the<br>button)</span>
-                    </div>
-                    <div>
-                        <h2>ok, for real now —</h2>
-                    </div>
+            <div class="glass-card" style="display: flex; gap: 20px; align-items: center;">
+                <div style="text-align: center; border-right: 1px solid rgba(0,0,0,0.1); padding-right: 20px;">
+                    <p class="small-text" style="margin:0;">make an actual wish, i'll wait</p>
+                    <p style="font-weight:bold; margin: 10px 0;">blow these out</p>
+                    <div id="candle" style="font-size: 2rem; margin-bottom: 10px;">🎂</div>
+                    <button class="cute-btn" id="blow-btn" style="font-size: 0.8rem; padding: 5px 10px;">blow ↓</button>
+                    <p class="small-text" style="margin-top: 5px;">(tap the button)</p>
                 </div>
+                <div>
+                    <h2 class="highlight-purple">ok, for real now —</h2>
+                </div>
+            </div>
 
-                <p class="small-text">happy birthday, Devashree. i know this page is a little silly and definitely not professional-looking, but i wanted to make you something with my own two hands instead of just texting "hbd" like everyone else does.</p>
-                <p class="small-text">i hope this year gives you everything you don't even know you're hoping for — good people, less stress, more of those laughs that make your stomach hurt, and days that actually feel like yours. you deserve a genuinely good year, Cutie, not just a good day.</p>
-                <p class="small-text">thanks for being you. don't change that part.</p>
-                <p style="margin-top: 1.5rem;">— Jayu</p>
-                <button class="simple-btn" style="margin-left: 2rem;">one more time 🎉</button>
-                <p style="color: #999; font-size: 0.8rem; margin-top: 2rem;">made by <span style="color: #ff6b8b;">Jayu</span> (Jayostu Patil)</p>
+            <div class="glass-card">
+                <p>happy birthday, Devashree. i know this page is a little silly and definitely not professional-looking, but i wanted to make you something with my own two hands instead of just texting "hbd" like everyone else does.</p>
+                <p>i hope this year gives you everything you don't even know you're hoping for — good people, less stress, more of those laughs that make your stomach hurt, and days that actually feel like yours. you deserve a genuinely good year, Cutie, not just a good day.</p>
+                <p>thanks for being you. don't change that part.</p>
+                <p style="margin-top: 2rem; font-weight: bold; color: #8a4baf;">— Jayu</p>
+                <button class="cute-btn" id="more-time-btn">one more time 🎉</button>
+                <p class="small-text" style="margin-top: 2rem;">made by <span class="highlight-pink">Jayu</span> (Jayostu Patil)</p>
             </div>
         </div>
 
     </div>
 
+    <!-- --- JAVASCRIPT / UI LOGIC --- -->
+    <script>
+        // 1. Blow out the candle logic
+        document.getElementById('blow-btn').addEventListener('click', function() {
+            const candle = document.getElementById('candle');
+            candle.innerHTML = '💨'; // Changes cake to wind puff
+            candle.style.opacity = '0.5';
+            this.innerText = 'yay! ✨';
+        });
+
+        // 2. Simple Confetti System for Buttons
+        const canvas = document.getElementById('confetti-canvas');
+        const ctx = canvas.getContext('2d');
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+
+        let particles = [];
+        const colors = ['#ff6b8b', '#8a4baf', '#ffffff', '#ff9a9e'];
+
+        function createConfetti(x, y) {
+            for (let i = 0; i < 50; i++) {
+                particles.push({
+                    x: x,
+                    y: y,
+                    r: Math.random() * 6 + 2,
+                    dx: Math.random() * 10 - 5,
+                    dy: Math.random() * -10 - 5,
+                    color: colors[Math.floor(Math.random() * colors.length)]
+                });
+            }
+        }
+
+        function animateConfetti() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            particles.forEach((p, index) => {
+                p.dy += 0.3; // gravity
+                p.x += p.dx;
+                p.y += p.dy;
+                ctx.beginPath();
+                ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+                ctx.fillStyle = p.color;
+                ctx.fill();
+                if (p.y > canvas.height) particles.splice(index, 1);
+            });
+            requestAnimationFrame(animateConfetti);
+        }
+        animateConfetti(); // Start loop
+
+        // Attach confetti to specific buttons
+        document.getElementById('poke-btn').addEventListener('click', (e) => {
+            createConfetti(e.clientX, e.clientY);
+        });
+        
+        document.getElementById('more-time-btn').addEventListener('click', (e) => {
+            createConfetti(e.clientX, e.clientY);
+            createConfetti(window.innerWidth / 2, window.innerHeight / 2); // extra burst in middle
+        });
+
+        // Resize canvas if window changes
+        window.addEventListener('resize', () => {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        });
+    </script>
 </body>
 </html>
