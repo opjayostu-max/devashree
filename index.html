@@ -1,293 +1,463 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Happy Birthday Cutie!</title>
-    <style>
-        /* --- CUTE ANIMATED BACKGROUND --- */
-        body {
-            margin: 0;
-            padding: 2rem;
-            min-height: 100vh;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            color: #4a4a4a;
-            overflow-x: hidden;
-            /* Animated Pastel Gradient */
-            background: linear-gradient(-45deg, #fbc2eb, #e6dee9, #ff9a9e, #fecfef);
-            background-size: 400% 400%;
-            animation: bgShift 15s ease infinite;
-        }
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes" />
+  <title>✨ for Devashree · a surprise</title>
+  <!-- Google Fonts + Icons -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+  <style>
+    /* ----- global reset & base ----- */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
-        @keyframes bgShift {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
-        }
+    body {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: "Inter", sans-serif;
+      background: radial-gradient(circle at 30% 20%, #1e1f2e, #0b0d14);
+      padding: 1.8rem;
+      margin: 0;
+      color: #f0f3fc;
+    }
 
-        /* --- RESPONSIVE SCROLLABLE GRID --- */
-        .layout-grid {
-            display: grid;
-            grid-template-columns: 1fr; /* Mobile: 1 column so it scrolls easily */
-            gap: 1.5rem;
-            max-width: 1300px;
-            margin: 0 auto;
-            padding-bottom: 5rem; /* Extra space at the bottom for scrolling */
-        }
+    /* ----- main glass card (liquid + premium) ----- */
+    .glass-card {
+      max-width: 880px;
+      width: 100%;
+      background: rgba(20, 22, 36, 0.3);
+      backdrop-filter: blur(24px) saturate(200%);
+      -webkit-backdrop-filter: blur(24px) saturate(200%);
+      border-radius: 64px;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      box-shadow: 0 40px 80px -20px rgba(0, 0, 0, 0.8), inset 0 1px 0 rgba(255, 255, 255, 0.06);
+      padding: 2.8rem 2.8rem;
+      position: relative;
+      overflow: hidden;
+      transition: all 0.3s ease;
+    }
 
-        @media (min-width: 1000px) {
-            .layout-grid {
-                grid-template-columns: 1fr 1fr 1.2fr; /* Desktop: 3 scattered columns */
-                gap: 2.5rem;
-            }
-            .col-2 { margin-top: 4rem; }
-            .col-3 { margin-top: 8rem; }
-        }
+    /* shimmer animation — liquid glass effect */
+    .glass-card::before {
+      content: '';
+      position: absolute;
+      inset: -50%;
+      width: 200%;
+      height: 200%;
+      background: radial-gradient(circle at 20% 40%, rgba(255, 215, 150, 0.06) 0%, transparent 60%),
+                  radial-gradient(circle at 80% 70%, rgba(180, 200, 255, 0.05) 0%, transparent 50%);
+      pointer-events: none;
+      animation: liquidShimmer 22s infinite alternate ease-in-out;
+      z-index: 0;
+    }
 
-        /* --- LIQUID GLASS FLOATING CARDS --- */
-        .text-card {
-            background: rgba(255, 255, 255, 0.4);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            border: 1px solid rgba(255, 255, 255, 0.6);
-            border-radius: 20px;
-            padding: 2rem;
-            margin-bottom: 2rem;
-            box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.1);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
+    @keyframes liquidShimmer {
+      0% { transform: translate(0, 0) rotate(0deg); opacity: 0.4; }
+      50% { transform: translate(8%, -6%) rotate(5deg); opacity: 0.8; }
+      100% { transform: translate(-6%, 8%) rotate(-4deg); opacity: 0.4; }
+    }
 
-        .text-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 12px 40px 0 rgba(31, 38, 135, 0.15);
-        }
+    .glass-card * {
+      position: relative;
+      z-index: 2;
+    }
 
-        /* --- TYPOGRAPHY & COLORS --- */
-        h1 { font-size: 2.8rem; margin: 0.5rem 0; line-height: 1.1; color: #333; }
-        .highlight-pink { color: #ff5277; font-size: 3.5rem; }
-        .highlight-purple { color: #783ba3; font-size: 2.2rem; margin-top: 0; }
-        h2 { font-size: 1.8rem; margin: 0.5rem 0; color: #444; }
-        p { line-height: 1.6; font-size: 1.1rem; margin: 0.8rem 0; }
-        .small-text { font-size: 0.95rem; opacity: 0.7; font-style: italic; }
+    /* subtle inner glow (premium) */
+    .glass-card::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      border-radius: 64px;
+      padding: 1px;
+      background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), transparent 50%, rgba(255, 255, 255, 0.02));
+      -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+      mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+      -webkit-mask-composite: xor;
+      mask-composite: exclude;
+      pointer-events: none;
+    }
 
-        /* --- SURPRISE BUTTONS --- */
-        .cute-btn {
-            background: rgba(255, 255, 255, 0.5);
-            border: 2px solid #ff5277;
-            padding: 10px 20px;
-            border-radius: 30px;
-            cursor: pointer;
-            font-family: inherit;
-            font-size: 1rem;
-            color: #ff5277;
-            font-weight: bold;
-            margin-top: 15px;
-            backdrop-filter: blur(5px);
-            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275); /* Bouncy transition */
-            position: relative;
-            overflow: hidden;
-        }
+    /* ----- typography ----- */
+    .pre-header {
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+      font-size: 0.8rem;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: rgba(255, 255, 255, 0.3);
+      margin-bottom: 1.2rem;
+      font-weight: 400;
+    }
 
-        .cute-btn:hover {
-            background: #ff5277;
-            color: white;
-            transform: scale(1.08) rotate(-2deg);
-            box-shadow: 0 10px 20px rgba(255, 82, 119, 0.3);
-        }
+    .pre-header i {
+      color: rgba(255, 200, 150, 0.4);
+      font-size: 0.9rem;
+    }
 
-        .emoji-flex { display: flex; gap: 15px; margin-bottom: 1.5rem; }
-        .emoji-flex span:first-child { font-size: 1.5rem; }
+    h1 {
+      font-size: 3.4rem;
+      font-weight: 600;
+      letter-spacing: -0.03em;
+      line-height: 1.1;
+      background: linear-gradient(135deg, #ffffff 15%, #d6e0ff 70%, #b8cbff);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin-bottom: 0.3rem;
+    }
 
-        /* Confetti Canvas */
-        #confetti-canvas {
-            position: fixed;
-            top: 0; left: 0;
-            width: 100vw; height: 100vh;
-            pointer-events: none;
-            z-index: 9999;
-        }
-    </style>
+    .sub-line {
+      font-size: 1.2rem;
+      font-weight: 350;
+      color: rgba(255, 255, 255, 0.6);
+      border-left: 3px solid rgba(255, 215, 150, 0.3);
+      padding-left: 1.2rem;
+      margin-bottom: 2.2rem;
+      font-style: italic;
+    }
+
+    .sub-line i {
+      color: #ffb07c;
+      margin-right: 0.4rem;
+    }
+
+    /* ----- content sections (original messages preserved) ----- */
+    .message-block {
+      background: rgba(255, 255, 255, 0.02);
+      backdrop-filter: blur(4px);
+      -webkit-backdrop-filter: blur(4px);
+      border-radius: 32px;
+      padding: 1.8rem 2rem;
+      margin: 1.8rem 0;
+      border: 1px solid rgba(255, 255, 255, 0.04);
+      box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.02);
+    }
+
+    .message-block p {
+      font-size: 1.1rem;
+      line-height: 1.7;
+      color: rgba(255, 255, 255, 0.85);
+      font-weight: 350;
+      margin-bottom: 0.8rem;
+    }
+
+    .message-block p:last-child {
+      margin-bottom: 0;
+    }
+
+    .highlight-name {
+      background: linear-gradient(135deg, #ffe6c7, #ffdbb5);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      font-weight: 500;
+    }
+
+    .cute-list {
+      display: flex;
+      flex-direction: column;
+      gap: 0.6rem;
+      margin: 1rem 0 0.5rem;
+    }
+
+    .cute-list .item {
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+      font-size: 1rem;
+      color: rgba(255, 255, 255, 0.75);
+      font-weight: 350;
+    }
+
+    .cute-list .item i {
+      width: 1.8rem;
+      font-size: 1.2rem;
+      color: #ffb07c;
+      text-align: center;
+    }
+
+    .divider {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin: 1.8rem 0;
+      color: rgba(255, 255, 255, 0.1);
+    }
+
+    .divider-line {
+      flex: 1;
+      height: 1px;
+      background: linear-gradient(to right, transparent, rgba(255, 215, 150, 0.15), transparent);
+    }
+
+    .divider i {
+      font-size: 0.8rem;
+      color: rgba(255, 215, 150, 0.2);
+    }
+
+    /* ----- wish & button (interactive) ----- */
+    .wish-section {
+      text-align: center;
+      margin: 1.8rem 0 1.2rem;
+    }
+
+    .wish-section .prompt {
+      font-size: 1.1rem;
+      font-weight: 350;
+      color: rgba(255, 255, 255, 0.6);
+      margin-bottom: 0.6rem;
+      letter-spacing: 0.02em;
+    }
+
+    .wish-section .prompt i {
+      color: #ffb07c;
+      margin: 0 0.3rem;
+    }
+
+    .btn-wish {
+      background: rgba(255, 255, 255, 0.04);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      border: 1px solid rgba(255, 215, 150, 0.15);
+      padding: 0.9rem 2.8rem;
+      border-radius: 60px;
+      font-size: 1.1rem;
+      font-weight: 450;
+      color: #f0f3fc;
+      cursor: pointer;
+      transition: all 0.25s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.7rem;
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+      letter-spacing: 0.02em;
+      margin: 0.5rem 0;
+    }
+
+    .btn-wish i {
+      font-size: 1.2rem;
+      color: #ffb07c;
+      transition: transform 0.3s ease;
+    }
+
+    .btn-wish:hover {
+      background: rgba(255, 255, 255, 0.08);
+      border-color: rgba(255, 215, 150, 0.3);
+      transform: scale(1.02);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    }
+
+    .btn-wish:active {
+      transform: scale(0.96);
+    }
+
+    .btn-wish:active i {
+      transform: scale(1.2) rotate(10deg);
+    }
+
+    /* hidden message (revealed on click) */
+    .hidden-message {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.8s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.6s ease, margin 0.4s ease;
+      opacity: 0;
+      margin: 0;
+      text-align: center;
+    }
+
+    .hidden-message.show {
+      max-height: 300px;
+      opacity: 1;
+      margin: 1.2rem 0 0.2rem;
+    }
+
+    .hidden-message p {
+      background: rgba(255, 215, 150, 0.03);
+      border-radius: 40px;
+      padding: 1.2rem 1.8rem;
+      border: 1px solid rgba(255, 215, 150, 0.06);
+      font-size: 1rem;
+      color: rgba(255, 255, 255, 0.8);
+      font-weight: 350;
+      line-height: 1.6;
+      backdrop-filter: blur(4px);
+    }
+
+    .hidden-message p i {
+      color: #ffb07c;
+      margin: 0 0.2rem;
+    }
+
+    /* ----- signature & footer ----- */
+    .signature {
+      margin-top: 2.2rem;
+      padding-top: 1.2rem;
+      border-top: 1px solid rgba(255, 255, 255, 0.04);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 0.8rem;
+    }
+
+    .signature .name {
+      font-weight: 400;
+      color: rgba(255, 255, 255, 0.3);
+      letter-spacing: 0.04em;
+      font-size: 0.85rem;
+    }
+
+    .signature .name i {
+      color: rgba(255, 180, 130, 0.2);
+      margin: 0 0.3rem;
+    }
+
+    .signature .love-note {
+      font-size: 0.8rem;
+      color: rgba(255, 255, 255, 0.15);
+      font-weight: 300;
+      letter-spacing: 0.06em;
+    }
+
+    .love-note i {
+      color: rgba(255, 180, 130, 0.15);
+      margin: 0 0.2rem;
+    }
+
+    /* ----- responsive (mobile first) ----- */
+    @media (max-width: 640px) {
+      body { padding: 1rem; }
+      .glass-card { padding: 1.8rem 1.2rem; border-radius: 40px; }
+      h1 { font-size: 2.4rem; }
+      .sub-line { font-size: 1rem; padding-left: 0.8rem; }
+      .message-block { padding: 1.2rem 1rem; }
+      .message-block p { font-size: 0.95rem; }
+      .cute-list .item { font-size: 0.9rem; }
+      .btn-wish { padding: 0.7rem 1.8rem; font-size: 1rem; }
+      .signature { flex-direction: column; align-items: flex-start; gap: 0.3rem; }
+    }
+
+    @media (max-width: 420px) {
+      .glass-card { padding: 1.2rem 0.8rem; border-radius: 32px; }
+      h1 { font-size: 2rem; }
+      .pre-header { font-size: 0.6rem; gap: 0.4rem; }
+    }
+
+    /* tiny extra sparkle */
+    .sparkle {
+      color: rgba(255, 215, 150, 0.15);
+      margin: 0 0.2rem;
+    }
+  </style>
 </head>
 <body>
 
-    <!-- Canvas for JavaScript Confetti -->
-    <canvas id="confetti-canvas"></canvas>
+<div class="glass-card" id="mainCard">
+  <!-- pre-header -->
+  <div class="pre-header">
+    <i class="fas fa-calendar-alt"></i> circled since january · 14 sept
+    <span style="flex:1; text-align:right; opacity:0.3;"><i class="fas fa-star"></i></span>
+  </div>
 
-    <div class="layout-grid">
-        
-        <!-- COLUMN 1 -->
-        <div class="col-1">
-            <div class="text-card">
-                <p class="small-text">ok before you scroll past this...<br>it's kind of important</p>
-                <h1>i made you<br>a little<br>something,</h1>
-                <h1 class="highlight-pink">Cutie</h1>
-                <button class="cute-btn" id="poke-btn">🎁 poke it ➔</button>
-            </div>
+  <!-- main title -->
+  <h1>i made you<br />a little something, <span style="background:linear-gradient(135deg,#ffdbb5,#ffb07c); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text;">Cutie</span></h1>
+  <div class="sub-line"><i class="fas fa-heart" style="color:#ff7b6b;"></i> happy birthday, Devashree Manoj Marathe</div>
 
-            <div class="text-card">
-                <p class="small-text">circled in my calendar since january, obviously</p>
-                <p style="font-weight: bold; color: #783ba3; font-size: 1.2rem;">14 sept</p>
-                <h2>happy birthday<br>Devashree Manoj Marathe !!</h2>
-                <p>khup yede chade lagle he banvayla ani yes i know it's not a fancy website with a countdown timer or whatever. i just wanted to make you something myself instead of buying a card lol</p>
-                <button class="cute-btn" id="scroll-btn">keep scrolling ↓</button>
-            </div>
-        </div>
+  <!-- message block 1: original + extra cute -->
+  <div class="message-block">
+    <p><i class="fas fa-quote-left" style="color:rgba(255,215,150,0.2); margin-right:6px;"></i> khup yede chade lagle he banvayla ani yes i know it's not a fancy website with a countdown timer or whatever. i just wanted to make you something myself instead of buying a card lol</p>
+    <p style="margin-top:0.6rem; font-size:0.95rem; color:rgba(255,255,255,0.5);"><i class="fas fa-feather-alt" style="color:rgba(255,215,150,0.2);"></i> but honestly? you deserve all the fancy things in the universe. so here's a little sparkle, just for you.</p>
+  </div>
 
-        <!-- COLUMN 2 -->
-        <div class="col-2">
-            <div class="text-card">
-                <p class="small-text">random things about you i was thinking about while making this</p>
-                <h2 class="highlight-purple">a few things,<br>off the top of my head</h2>
-                
-                <div class="emoji-flex">
-                    <span>😄</span> <div><strong></strong><br>your smile is honestly contagious, it's not fair to the rest of us</div>
-                </div>
-                <div class="emoji-flex">
-                    <span>🤗</span> <div><strong></strong><br>you make me feel comfortable without even trying</div>
-                </div>
-                <div class="emoji-flex">
-                    <span>💪</span> <div><strong></strong><br>you handle way more than people realize, and you're still kind about it</div>
-                </div>
-            </div>
-
-            <div class="text-card">
-                <p class="small-text">ok this part's just for fun, humor me</p>
-                <h2>pop these, i hid something in there</h2>
-                <button class="cute-btn" id="cake-btn">alright, cake time ↓</button>
-            </div>
-        </div>
-
-        <!-- COLUMN 3 -->
-        <div class="col-3">
-            <div class="text-card" id="candle-section" style="display: flex; gap: 20px; align-items: center;">
-                <div style="text-align: center; border-right: 2px dashed rgba(255, 82, 119, 0.3); padding-right: 20px;">
-                    <p class="small-text" style="margin:0;">make an actual wish, i'll wait</p>
-                    <p style="font-weight:bold; margin: 10px 0; color:#783ba3;">blow these out</p>
-                    <div id="candle" style="font-size: 3rem; margin-bottom: 10px; transition: all 0.5s;">🎂</div>
-                    <button class="cute-btn" id="blow-btn" style="font-size: 0.9rem; padding: 8px 15px;">blow ↓</button>
-                    <p class="small-text" style="margin-top: 5px;">(tap the button)</p>
-                </div>
-                <div>
-                    <h2 class="highlight-purple">ok, for real now —</h2>
-                </div>
-            </div>
-
-            <div class="text-card">
-                <p>happy birthday, Devashree (Deu). i know this page is a little silly and definitely not professional-looking, but i wanted to make you something with my own two hands instead of just texting "hbd" like everyone else does.</p>
-                <p>i hope this year gives you everything you don't even know you're hoping for — good people, less stress, more of those laughs that make your stomach hurt, and days that actually feel like yours. you deserve a genuinely good year, Cutie, not just a good day.</p>
-                <p>thanks for being you. don't change that part (lummu mazi cutie) .</p>
-                <p style="margin-top: 2rem; font-weight: bold; color: #783ba3; font-size: 1.2rem;">— Jayu</p>
-                <button class="cute-btn" id="more-time-btn">one more time 🎉</button>
-                <p class="small-text" style="margin-top: 2rem;">made by <span class="highlight-pink" style="font-size:1rem;">Jayu</span> (Jayostu Patil)</p>
-            </div>
-        </div>
-
+  <!-- random things (original + extra) -->
+  <div style="margin: 0.5rem 0;">
+    <p style="font-size:0.9rem; font-weight:350; color:rgba(255,255,255,0.4); letter-spacing:0.1em; text-transform:uppercase; margin-bottom:0.8rem;"><i class="fas fa-circle" style="font-size:0.3rem; vertical-align:middle; margin-right:6px; color:#ffb07c;"></i> a few things, off the top of my head</p>
+    <div class="cute-list">
+      <div class="item"><i class="fas fa-smile"></i> your smile is honestly contagious, it's not fair to the rest of us</div>
+      <div class="item"><i class="fas fa-hand-holding-heart"></i> you make me feel comfortable without even trying</div>
+      <div class="item"><i class="fas fa-shield-alt"></i> you handle way more than people realize, and you're still kind about it</div>
+      <!-- extra cute messages -->
+      <div class="item"><i class="fas fa-sparkles"></i> your laugh could literally cure a bad day — and i mean that</div>
+      <div class="item"><i class="fas fa-moon"></i> you're the kind of person that makes the world feel softer, just by being in it</div>
     </div>
+  </div>
 
-    <!-- --- JAVASCRIPT / SURPRISE LOGIC --- -->
-    <script>
-        // --- Confetti Engine ---
-        const canvas = document.getElementById('confetti-canvas');
-        const ctx = canvas.getContext('2d');
-        canvas.width = window.innerWidth;
-        canvas.height = window.innerHeight;
+  <!-- divider -->
+  <div class="divider">
+    <span class="divider-line"></span>
+    <i class="fas fa-crown"></i>
+    <span class="divider-line"></span>
+  </div>
 
-        let particles = [];
-        const colors = ['#ff5277', '#783ba3', '#ffffff', '#ff9a9e', '#ffd700'];
+  <!-- wish section (interactive) -->
+  <div class="wish-section">
+    <div class="prompt"><i class="fas fa-star"></i> pop these, i hid something in there <i class="fas fa-star"></i></div>
+    <div style="font-size:2.8rem; line-height:1.2; margin:0.2rem 0 0.2rem;">🎂</div>
+    <button class="btn-wish" id="wishBtn"><i class="fas fa-candle"></i> make an actual wish, i'll wait</button>
 
-        function createConfetti(x, y, amount = 50) {
-            for (let i = 0; i < amount; i++) {
-                particles.push({
-                    x: x, y: y,
-                    r: Math.random() * 8 + 3,
-                    dx: Math.random() * 12 - 6,
-                    dy: Math.random() * -15 - 5,
-                    color: colors[Math.floor(Math.random() * colors.length)],
-                    tilt: Math.floor(Math.random() * 10) - 10,
-                    tiltAngleInc: (Math.random() * 0.07) + 0.05,
-                    tiltAngle: 0
-                });
-            }
-        }
+    <!-- hidden extra message (revealed) -->
+    <div class="hidden-message" id="hiddenMessage">
+      <p><i class="fas fa-gift"></i> i wish for you to have more days that feel like warm sunlight, more laughter than you know what to do with, and at least one person (me) who thinks you're absolutely extraordinary. <i class="fas fa-heart" style="color:#ff7b6b;"></i></p>
+    </div>
+  </div>
 
-        function animateConfetti() {
-            ctx.clearRect(0, 0, canvas.width, canvas.height);
-            particles.forEach((p, index) => {
-                p.tiltAngle += p.tiltAngleInc;
-                p.dy += 0.4; // gravity
-                p.x += Math.sin(p.tiltAngle) * 2 + p.dx;
-                p.y += p.dy;
-                
-                ctx.beginPath();
-                ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
-                ctx.fillStyle = p.color;
-                ctx.fill();
-                
-                if (p.y > canvas.height) particles.splice(index, 1);
-            });
-            requestAnimationFrame(animateConfetti);
-        }
-        animateConfetti(); // Start the loop
+  <!-- final message (original + extra love) -->
+  <div class="message-block" style="margin-top:0.8rem;">
+    <p><strong style="font-weight:450; color:#f0f3fc;">ok, for real now —</strong></p>
+    <p>happy birthday, Devashree (Deu). i know this page is a little silly and definitely not professional-looking, but i wanted to make you something with my own two hands instead of just texting "hbd" like everyone else does.</p>
+    <p>i hope this year gives you everything you don't even know you're hoping for — good people, less stress, more of those laughs that make your stomach hurt, and days that actually feel like yours. you deserve a genuinely good year, Cutie, not just a good day.</p>
+    <p>thanks for being you. don't change that part <i class="fas fa-heart" style="color:#ff7b6b; font-size:0.9rem;"></i> (lummu mazi cutie).</p>
+    <!-- extra heartfelt line -->
+    <p style="margin-top:0.8rem; font-style:italic; color:rgba(255,215,150,0.5); font-size:0.95rem;"><i class="fas fa-feather-alt"></i> and if you ever doubt it — you are absolutely worth every bit of waiting, every bit of love, and every bit of this silly little page.</p>
+  </div>
 
-        window.addEventListener('resize', () => {
-            canvas.width = window.innerWidth;
-            canvas.height = window.innerHeight;
-        });
+  <!-- signature -->
+  <div class="signature">
+    <span class="name"><i class="fas fa-pen-fancy"></i> made by Jayu (Jayostu Patil)</span>
+    <span class="love-note"><i class="fas fa-infinity"></i> for Devashree <i class="fas fa-infinity"></i></span>
+  </div>
+</div>
 
-        // --- SURPRISE 1: Poke Button ---
-        const pokeBtn = document.getElementById('poke-btn');
-        pokeBtn.addEventListener('click', function(e) {
-            createConfetti(e.clientX, e.clientY, 40);
-            this.innerText = "ouch! stop poking! 😆";
-            this.style.transform = "scale(0.9)";
-            setTimeout(() => {
-                this.innerText = "🎁 poke it ➔";
-                this.style.transform = "scale(1)";
-            }, 1500);
-        });
+<script>
+  (function() {
+    const wishBtn = document.getElementById('wishBtn');
+    const hiddenMsg = document.getElementById('hiddenMessage');
+    let isRevealed = false;
 
-        // --- SURPRISE 2: Keep Scrolling Button ---
-        document.getElementById('scroll-btn').addEventListener('click', function(e) {
-            // Shoots a little confetti and smooth scrolls down
-            createConfetti(e.clientX, e.clientY, 20);
-            window.scrollBy({top: window.innerHeight * 0.7, behavior: 'smooth'});
-            this.innerText = "wheee! 🎢";
-            setTimeout(() => { this.innerText = "keep scrolling ↓"; }, 1000);
-        });
+    wishBtn.addEventListener('click', function(e) {
+      e.preventDefault();
+      // toggle reveal
+      if (!isRevealed) {
+        hiddenMsg.classList.add('show');
+        wishBtn.innerHTML = '<i class="fas fa-check-circle"></i> wish made ✨';
+        wishBtn.style.borderColor = 'rgba(255, 215, 150, 0.3)';
+        isRevealed = true;
+      } else {
+        // if already revealed, just a little fun interaction
+        wishBtn.innerHTML = '<i class="fas fa-candle"></i> blow them out again?';
+        setTimeout(() => {
+          wishBtn.innerHTML = '<i class="fas fa-check-circle"></i> wish made ✨';
+        }, 800);
+        // small sparkle effect
+        hiddenMsg.style.transition = 'all 0.2s';
+        hiddenMsg.style.opacity = '0.7';
+        setTimeout(() => { hiddenMsg.style.opacity = '1'; }, 200);
+      }
+    });
 
-        // --- SURPRISE 3: Cake Time Button ---
-        document.getElementById('cake-btn').addEventListener('click', function(e) {
-            // Scrolls exactly to the candle section
-            document.getElementById('candle-section').scrollIntoView({behavior: 'smooth', block: 'center'});
-            createConfetti(window.innerWidth / 2, window.innerHeight / 2, 60);
-        });
+    // optional: if user taps the cake emoji, also trigger
+    document.querySelector('.wish-section .prompt')?.addEventListener('click', function() {
+      wishBtn.click();
+    });
 
-        // --- SURPRISE 4: Blow the Candle Button ---
-        let blownOut = false;
-        document.getElementById('blow-btn').addEventListener('click', function(e) {
-            const candle = document.getElementById('candle');
-            if (!blownOut) {
-                candle.innerHTML = '💨🧁'; // Cake blows away into a cupcake!
-                candle.style.transform = 'scale(1.2)';
-                this.innerText = ' WISH MADE ✨';
-                // MASSIVE confetti explosion from the center
-                createConfetti(window.innerWidth / 2, window.innerHeight / 2, 150);
-                blownOut = true;
-            } else {
-                createConfetti(e.clientX, e.clientY, 30);
-            }
-        });
-
-        // --- SURPRISE 5: One More Time Button ---
-        document.getElementById('more-time-btn').addEventListener('click', function(e) {
-            // Triggers multiple bursts of confetti everywhere!
-            createConfetti(window.innerWidth * 0.2, window.innerHeight * 0.5, 50);
-            createConfetti(window.innerWidth * 0.8, window.innerHeight * 0.5, 50);
-            createConfetti(window.innerWidth * 0.5, window.innerHeight * 0.2, 80);
-            this.innerText = "🎊";
-            setTimeout(() => { this.innerText = "one more time 🎉"; }, 2000);
-        });
-
-    </script>
+  })();
+</script>
 </body>
 </html>
