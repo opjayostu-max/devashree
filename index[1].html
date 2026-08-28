@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>A Surprise for Cutie 🎁</title>
+<meta name="description" content="A birthday surprise for Devashree Marathe (Cutie)" />
+
+<!-- Google Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;600;700;800&family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+<!-- Confetti canvas, sits above everything, ignores clicks -->
+<canvas id="confetti-canvas"></canvas>
+
+<!-- floating background balloons for the whole page -->
+<div class="bg-balloons" aria-hidden="true">
+  <span class="bg-balloon b1">🎈</span>
+  <span class="bg-balloon b2">🎈</span>
+  <span class="bg-balloon b3">🎈</span>
+  <span class="bg-balloon b4">🎈</span>
+  <span class="bg-balloon b5">🎈</span>
+</div>
+
+<!-- progress dots -->
+<nav class="progress-dots" aria-hidden="true">
+  <span class="dot active" data-target="hero"></span>
+  <span class="dot" data-target="reveal"></span>
+  <span class="dot" data-target="about"></span>
+  <span class="dot" data-target="balloons"></span>
+  <span class="dot" data-target="cake"></span>
+  <span class="dot" data-target="message"></span>
+</nav>
+
+<!-- ================= HERO ================= -->
+<section id="hero" class="screen">
+  <div class="eyebrow">psst... this is for you, Cutie</div>
+  <h1 class="hero-title">Someone hid a<br><span class="highlight">little surprise</span><br>just for you</h1>
+
+  <button id="gift-btn" class="gift-wrap" aria-label="Open your surprise">
+    <svg class="gift-svg" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+      <g id="gift-lid" class="gift-lid">
+        <rect x="35" y="55" width="130" height="30" rx="8" fill="#FF6F91"/>
+        <rect x="90" y="30" width="20" height="55" fill="#FFC93C"/>
+        <path d="M100 55 C 70 20, 40 25, 55 50 C 65 62, 90 58, 100 55 Z" fill="#B8A6FF"/>
+        <path d="M100 55 C 130 20, 160 25, 145 50 C 135 62, 110 58, 100 55 Z" fill="#B8A6FF"/>
+      </g>
+      <rect x="40" y="85" width="120" height="90" rx="10" fill="#FFD9E8"/>
+      <rect x="90" y="85" width="20" height="90" fill="#FFC93C"/>
+      <rect x="40" y="120" width="120" height="14" fill="#FFC93C" opacity="0.5"/>
+    </svg>
+    <span class="gift-cta">Tap to open 🎁</span>
+  </button>
+
+  <p class="hero-hint">go on, poke it</p>
+</section>
+
+<!-- ================= REVEAL DATE ================= -->
+<section id="reveal" class="screen">
+  <p class="eyebrow">mark it in bold, underline it twice</p>
+  <div class="date-card">
+    <span class="date-day">14</span>
+    <span class="date-month">SEPTEMBER</span>
+  </div>
+  <h2 class="section-title">This is officially<br><span class="highlight">Devashree's Day</span> 🌸</h2>
+  <p class="section-sub">Also known worldwide (population: everyone who loves you) as <strong>Cutie's</strong> birthday.</p>
+  <button class="next-btn" data-next="about">Keep going <span class="arrow">↓</span></button>
+</section>
+
+<!-- ================= ABOUT / FLIP CARDS ================= -->
+<section id="about" class="screen">
+  <p class="eyebrow">a few facts, scientifically confirmed by everyone who knows you</p>
+  <h2 class="section-title">Why the world got<br>a little brighter, <span class="highlight">14 years of Septembers ago</span></h2>
+
+  <div class="flip-grid">
+    <div class="flip-card">
+      <div class="flip-inner">
+        <div class="flip-front"><span class="flip-emoji">😄</span><p>Reason #1</p></div>
+        <div class="flip-back"><p>Your smile is unfairly contagious.</p></div>
+      </div>
+    </div>
+    <div class="flip-card">
+      <div class="flip-inner">
+        <div class="flip-front"><span class="flip-emoji">🤗</span><p>Reason #2</p></div>
+        <div class="flip-back"><p>You make people feel instantly at home.</p></div>
+      </div>
+    </div>
+    <div class="flip-card">
+      <div class="flip-inner">
+        <div class="flip-front"><span class="flip-emoji">💪</span><p>Reason #3</p></div>
+        <div class="flip-back"><p>You're stronger than you give yourself credit for.</p></div>
+      </div>
+    </div>
+    <div class="flip-card">
+      <div class="flip-inner">
+        <div class="flip-front"><span class="flip-emoji">🎨</span><p>Reason #4</p></div>
+        <div class="flip-back"><p>You notice the little things others miss.</p></div>
+      </div>
+    </div>
+    <div class="flip-card">
+      <div class="flip-inner">
+        <div class="flip-front"><span class="flip-emoji">💛</span><p>Reason #5</p></div>
+        <div class="flip-back"><p>You're loved way more than you realize.</p></div>
+      </div>
+    </div>
+  </div>
+  <p class="tap-hint">(tap the cards)</p>
+  <button class="next-btn" data-next="balloons">One more thing <span class="arrow">↓</span></button>
+</section>
+
+<!-- ================= BALLOON POP GAME ================= -->
+<section id="balloons" class="screen">
+  <p class="eyebrow">a tiny mission before your cake</p>
+  <h2 class="section-title">Pop every balloon<br>to unlock a <span class="highlight">secret message</span> 🎈</h2>
+
+  <div class="progress-track">
+    <div class="progress-fill" id="balloon-progress"></div>
+  </div>
+
+  <div class="balloon-field" id="balloon-field">
+    <!-- balloons injected by JS -->
+  </div>
+
+  <p id="balloon-message" class="secret-message"></p>
+
+  <button class="next-btn hidden" id="to-cake-btn" data-next="cake">To the cake! <span class="arrow">↓</span></button>
+</section>
+
+<!-- ================= CAKE / CANDLES ================= -->
+<section id="cake" class="screen">
+  <p class="eyebrow">make a wish, Cutie</p>
+  <h2 class="section-title">Blow out the candles</h2>
+
+  <div class="cake-wrap">
+    <svg id="cake-svg" viewBox="0 0 260 220" xmlns="http://www.w3.org/2000/svg">
+      <ellipse cx="130" cy="205" rx="110" ry="12" fill="#3B254522"/>
+      <rect x="30" y="140" width="200" height="60" rx="14" fill="#FF6F91"/>
+      <rect x="30" y="140" width="200" height="18" rx="9" fill="#FFD9E8"/>
+      <rect x="45" y="95" width="170" height="55" rx="14" fill="#FFC93C"/>
+      <rect x="45" y="95" width="170" height="16" rx="8" fill="#FFF3D0"/>
+      <rect x="65" y="55" width="130" height="48" rx="14" fill="#B8A6FF"/>
+      <rect x="65" y="55" width="130" height="14" rx="7" fill="#E6DBFF"/>
+      <!-- candles -->
+      <g class="candle" data-candle="1">
+        <rect x="85" y="30" width="8" height="28" rx="3" fill="#7FE3C6"/>
+        <circle class="flame" cx="89" cy="26" r="7" fill="#FFC93C"/>
+      </g>
+      <g class="candle" data-candle="2">
+        <rect x="126" y="24" width="8" height="34" rx="3" fill="#FF6F91"/>
+        <circle class="flame" cx="130" cy="20" r="7" fill="#FFC93C"/>
+      </g>
+      <g class="candle" data-candle="3">
+        <rect x="167" y="30" width="8" height="28" rx="3" fill="#7FE3C6"/>
+        <circle class="flame" cx="171" cy="26" r="7" fill="#FFC93C"/>
+      </g>
+    </svg>
+  </div>
+
+  <button id="blow-btn" class="next-btn">Blow them out 💨</button>
+  <p class="tap-hint" id="cake-hint">(tap the button, make your wish first!)</p>
+</section>
+
+<!-- ================= FINAL MESSAGE ================= -->
+<section id="message" class="screen">
+  <div class="message-card">
+    <span class="message-icon">💌</span>
+    <h2 class="section-title">Happy Birthday,<br><span class="highlight">Devashree</span> — my favourite Cutie</h2>
+    <p class="message-text">
+      Today isn't just another day on the calendar — it's the day the world got a little kinder,
+      a little brighter, and a lot more fun, because it got <strong>you</strong>. I hope this year
+      brings you every little thing that makes you smile, the kind of laughter that makes your
+      stomach hurt, people who love you exactly as you are, and enough sweet moments to match
+      how sweet you've been to everyone around you.
+    </p>
+    <p class="message-text">
+      Never stop being you, Cutie — the world is simply better with you in it. Here's to another
+      year of your beautiful chaos, big dreams, and endless cuteness. 🎉💛
+    </p>
+    <button id="replay-btn" class="next-btn">Celebrate again 🎉</button>
+  </div>
+
+  <footer class="footer">
+    Made with 💜 by <strong>Jayu</strong> <span class="footer-sub">(Jayostu Patil)</span>
+  </footer>
+</section>
+
+<script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,445 @@
+/* ============ TOKENS ============ */
+:root {
+  --cream: #FFF7ED;
+  --blush: #FFD9E8;
+  --coral: #FF6F91;
+  --sunshine: #FFC93C;
+  --lavender: #B8A6FF;
+  --mint: #7FE3C6;
+  --plum: #3B2545;
+  --plum-soft: #6B4E7A;
+
+  --font-display: 'Baloo 2', system-ui, sans-serif;
+  --font-body: 'Quicksand', system-ui, sans-serif;
+
+  --radius-lg: 28px;
+  --radius-md: 18px;
+  --shadow-soft: 0 12px 30px rgba(59, 37, 69, 0.12);
+}
+
+* { box-sizing: border-box; }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-body);
+  color: var(--plum);
+  background: linear-gradient(180deg, var(--cream) 0%, #FFF1E4 100%);
+  overflow-x: hidden;
+}
+
+h1, h2 {
+  font-family: var(--font-display);
+  margin: 0;
+  line-height: 1.15;
+}
+
+.highlight {
+  color: var(--coral);
+  position: relative;
+}
+
+.eyebrow {
+  font-family: var(--font-body);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-size: clamp(0.7rem, 1.6vw, 0.85rem);
+  color: var(--plum-soft);
+  margin-bottom: 14px;
+  text-align: center;
+}
+
+.section-title {
+  font-size: clamp(1.6rem, 5vw, 2.6rem);
+  text-align: center;
+  margin-bottom: 14px;
+}
+
+.section-sub {
+  text-align: center;
+  max-width: 480px;
+  font-size: clamp(1rem, 2vw, 1.15rem);
+  color: var(--plum-soft);
+}
+
+/* ============ CONFETTI CANVAS ============ */
+#confetti-canvas {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 999;
+}
+
+/* ============ BACKGROUND BALLOONS ============ */
+.bg-balloons {
+  position: fixed;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 0;
+}
+.bg-balloon {
+  position: absolute;
+  bottom: -10%;
+  font-size: 2.5rem;
+  opacity: 0.35;
+  animation: floatUp linear infinite;
+}
+.b1 { left: 8%;  animation-duration: 22s; animation-delay: 0s; }
+.b2 { left: 25%; animation-duration: 28s; animation-delay: 4s; font-size: 2rem;}
+.b3 { left: 50%; animation-duration: 25s; animation-delay: 8s; }
+.b4 { left: 72%; animation-duration: 30s; animation-delay: 2s; font-size: 3rem;}
+.b5 { left: 88%; animation-duration: 24s; animation-delay: 6s; font-size: 2.2rem;}
+
+@keyframes floatUp {
+  0%   { transform: translateY(0) translateX(0) rotate(0deg); }
+  50%  { transform: translateY(-55vh) translateX(20px) rotate(8deg); }
+  100% { transform: translateY(-110vh) translateX(-10px) rotate(-6deg); }
+}
+
+/* ============ PROGRESS DOTS (desktop only) ============ */
+.progress-dots {
+  position: fixed;
+  right: 22px;
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  z-index: 500;
+}
+.dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: rgba(59,37,69,0.18);
+  cursor: pointer;
+  transition: background 0.3s, transform 0.3s;
+}
+.dot.active {
+  background: var(--coral);
+  transform: scale(1.3);
+}
+@media (max-width: 720px) {
+  .progress-dots { display: none; }
+}
+
+/* ============ SCREEN / SECTION LAYOUT ============ */
+.screen {
+  position: relative;
+  z-index: 1;
+  min-height: 100svh;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 90px 24px;
+  gap: 4px;
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+.screen.in-view {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ============ HERO ============ */
+.hero-title {
+  font-size: clamp(1.8rem, 6vw, 3.2rem);
+  margin: 10px 0 36px;
+}
+
+.gift-wrap {
+  background: none;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 18px;
+  padding: 10px;
+}
+.gift-svg {
+  width: clamp(140px, 30vw, 200px);
+  height: auto;
+  filter: drop-shadow(var(--shadow-soft));
+  animation: giftBounce 2.4s ease-in-out infinite;
+}
+.gift-wrap:active .gift-svg,
+.gift-wrap.opened .gift-svg {
+  animation: none;
+}
+@keyframes giftBounce {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  50% { transform: translateY(-10px) rotate(-2deg); }
+}
+.gift-lid {
+  transform-origin: 100px 65px;
+  transition: transform 0.5s cubic-bezier(.34,1.56,.64,1);
+}
+.gift-wrap.opened .gift-lid {
+  transform: translateY(-40px) rotate(-25deg);
+}
+.gift-cta {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 1.1rem;
+  background: var(--coral);
+  color: white;
+  padding: 12px 28px;
+  border-radius: 999px;
+  box-shadow: var(--shadow-soft);
+  transition: transform 0.2s;
+}
+.gift-wrap:hover .gift-cta { transform: scale(1.05); }
+
+.hero-hint {
+  color: var(--plum-soft);
+  font-size: 0.9rem;
+  margin-top: 6px;
+  animation: pulse 2s ease-in-out infinite;
+}
+@keyframes pulse {
+  0%, 100% { opacity: 0.5; }
+  50% { opacity: 1; }
+}
+
+/* ============ DATE CARD ============ */
+.date-card {
+  background: white;
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-soft);
+  padding: 22px 46px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 28px;
+  border: 3px dashed var(--lavender);
+}
+.date-day {
+  font-family: var(--font-display);
+  font-size: clamp(3rem, 10vw, 5rem);
+  font-weight: 800;
+  color: var(--coral);
+  line-height: 1;
+}
+.date-month {
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  color: var(--plum-soft);
+}
+
+/* ============ NEXT BUTTON ============ */
+.next-btn {
+  font-family: var(--font-display);
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: white;
+  background: linear-gradient(135deg, var(--coral), #ff8fa8);
+  border: none;
+  padding: 14px 32px;
+  border-radius: 999px;
+  cursor: pointer;
+  box-shadow: var(--shadow-soft);
+  margin-top: 30px;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+.next-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 16px 34px rgba(59, 37, 69, 0.18);
+}
+.next-btn:active { transform: translateY(0); }
+.next-btn.hidden { display: none; }
+.arrow { display: inline-block; animation: bob 1.6s ease-in-out infinite; }
+@keyframes bob {
+  0%,100% { transform: translateY(0); }
+  50% { transform: translateY(4px); }
+}
+
+/* ============ FLIP CARDS ============ */
+.flip-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 18px;
+  max-width: 760px;
+  margin-top: 20px;
+}
+.flip-card {
+  perspective: 1000px;
+  height: 150px;
+  cursor: pointer;
+}
+.flip-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transition: transform 0.6s cubic-bezier(.34,1.56,.64,1);
+  transform-style: preserve-3d;
+}
+.flip-card.flipped .flip-inner {
+  transform: rotateY(180deg);
+}
+.flip-front, .flip-back {
+  position: absolute;
+  inset: 0;
+  backface-visibility: hidden;
+  border-radius: var(--radius-md);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 14px;
+  box-shadow: var(--shadow-soft);
+}
+.flip-front {
+  background: white;
+  color: var(--plum-soft);
+  font-weight: 700;
+}
+.flip-emoji { font-size: 2.2rem; margin-bottom: 8px; }
+.flip-back {
+  background: linear-gradient(135deg, var(--lavender), var(--coral));
+  color: white;
+  transform: rotateY(180deg);
+  font-weight: 600;
+  font-size: 0.95rem;
+}
+.tap-hint {
+  color: var(--plum-soft);
+  font-size: 0.85rem;
+  margin-top: 14px;
+  opacity: 0.8;
+}
+
+@media (max-width: 640px) {
+  .flip-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+/* ============ BALLOON GAME ============ */
+.progress-track {
+  width: min(90vw, 400px);
+  height: 12px;
+  background: rgba(59,37,69,0.1);
+  border-radius: 999px;
+  overflow: hidden;
+  margin: 10px 0 28px;
+}
+.progress-fill {
+  height: 100%;
+  width: 0%;
+  background: linear-gradient(90deg, var(--mint), var(--coral));
+  transition: width 0.4s ease;
+}
+
+.balloon-field {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 14px;
+  max-width: 620px;
+}
+.balloon {
+  position: relative;
+  width: 74px;
+  height: 92px;
+  border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 0.95rem;
+  cursor: pointer;
+  border: none;
+  box-shadow: var(--shadow-soft);
+  transition: transform 0.15s ease, opacity 0.3s ease;
+  animation: sway 3.5s ease-in-out infinite;
+}
+.balloon:nth-child(odd) { animation-delay: 0.4s; }
+.balloon:hover { transform: scale(1.06); }
+.balloon.popped {
+  transform: scale(0);
+  opacity: 0;
+  pointer-events: none;
+}
+@keyframes sway {
+  0%, 100% { transform: rotate(-3deg); }
+  50% { transform: rotate(3deg); }
+}
+.secret-message {
+  font-family: var(--font-display);
+  font-size: clamp(1.2rem, 3.5vw, 1.7rem);
+  color: var(--coral);
+  margin-top: 26px;
+  min-height: 1.5em;
+}
+
+/* ============ CAKE ============ */
+.cake-wrap { margin: 20px 0; }
+#cake-svg {
+  width: clamp(200px, 45vw, 300px);
+  height: auto;
+  filter: drop-shadow(var(--shadow-soft));
+}
+.candle .flame {
+  transform-origin: center;
+  animation: flicker 0.8s ease-in-out infinite alternate;
+}
+@keyframes flicker {
+  0% { transform: scale(1); opacity: 1; }
+  100% { transform: scale(0.85) translateY(1px); opacity: 0.85; }
+}
+.candle.blown .flame {
+  animation: none;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+/* ============ FINAL MESSAGE ============ */
+.message-card {
+  background: white;
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-soft);
+  padding: clamp(28px, 6vw, 52px);
+  max-width: 620px;
+  border: 3px solid var(--blush);
+}
+.message-icon { font-size: 2.4rem; display: block; margin-bottom: 10px; }
+.message-text {
+  font-size: clamp(1rem, 2vw, 1.15rem);
+  line-height: 1.7;
+  color: var(--plum-soft);
+  text-align: left;
+  margin: 18px 0;
+}
+
+.footer {
+  margin-top: 40px;
+  color: var(--plum-soft);
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+}
+.footer strong { color: var(--coral); }
+.footer-sub { opacity: 0.7; }
+
+/* utility */
+.hidden { display: none !important; }
