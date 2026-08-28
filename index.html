@@ -3,30 +3,171 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Happy Birthday Devashree 🎂</title>
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+<title>hey Cutie, this one's for you 🎁</title>
+<meta name="description" content="A birthday page I made for Devashree (Cutie)" />
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Patrick+Hand&display=swap" rel="stylesheet">
+
 <link rel="stylesheet" href="style.css" />
 </head>
 <body>
 
 <canvas id="confetti-canvas"></canvas>
 
-<main class="card">
-  <div class="balloons">🎈🎈🎈</div>
-  <h1>Happy Birthday<br><span>Devashree</span></h1>
-  <p class="nickname">aka Cutie 💛</p>
+<div class="bg-doodles" aria-hidden="true">
+  <span class="doodle d1">✦</span>
+  <span class="doodle d2">♡</span>
+  <span class="doodle d3">✧</span>
+  <span class="doodle d4">♡</span>
+  <span class="doodle d5">✦</span>
+</div>
 
-  <p class="message">
-    Wishing you a very Happy Birthday! May God bless you always and
-    make your whole year go smooth and wonderful. May you stay happy,
-    healthy, and surrounded by love every single day. Have a fantastic
-    birthday, Cutie! 🎉
-  </p>
+<!-- ================= HERO ================= -->
+<section id="hero" class="screen">
+  <p class="scribble-note">ok before you scroll past this... it's kind of important</p>
+  <h1 class="hero-title">i made you<br>a little something,<br><span class="highlight">Cutie</span></h1>
 
-  <button id="celebrate-btn">🎉 Celebrate</button>
+  <button id="gift-btn" class="gift-wrap" aria-label="Open your surprise">
+    <svg class="gift-svg" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+      <g id="gift-lid" class="gift-lid">
+        <rect x="35" y="55" width="130" height="30" rx="4" fill="var(--marker-pink)" stroke="var(--ink)" stroke-width="4"/>
+        <rect x="90" y="30" width="20" height="55" fill="var(--marker-yellow)" stroke="var(--ink)" stroke-width="3"/>
+        <path d="M100 55 C 70 20, 40 25, 55 50 C 65 62, 90 58, 100 55 Z" fill="var(--marker-blue)" stroke="var(--ink)" stroke-width="3"/>
+        <path d="M100 55 C 130 20, 160 25, 145 50 C 135 62, 110 58, 100 55 Z" fill="var(--marker-blue)" stroke="var(--ink)" stroke-width="3"/>
+      </g>
+      <rect x="40" y="85" width="120" height="90" rx="4" fill="var(--paper-card)" stroke="var(--ink)" stroke-width="4"/>
+      <rect x="90" y="85" width="20" height="90" fill="var(--marker-yellow)" stroke="var(--ink)" stroke-width="3"/>
+    </svg>
+    <span class="gift-cta">poke it →</span>
+  </button>
+</section>
 
-  <footer>Made by Jayu (Jayostu Patil)</footer>
-</main>
+<!-- ================= REVEAL DATE ================= -->
+<section id="reveal" class="screen">
+  <p class="scribble-note">circled in my calendar since january, obviously</p>
+  <div class="date-card">
+    <span class="date-day">14</span>
+    <span class="date-month">sept</span>
+  </div>
+  <h2 class="section-title">happy birthday<br><span class="highlight">Devashree</span> !!</h2>
+  <p class="section-sub">yes i know it's not a fancy website with a countdown timer or whatever. i just wanted to make you something myself instead of buying a card lol</p>
+  <button class="next-btn" data-next="about">keep scrolling <span class="arrow">↓</span></button>
+</section>
+
+<!-- ================= ABOUT / FLIP CARDS ================= -->
+<section id="about" class="screen">
+  <p class="scribble-note">random things about you i was thinking about while making this</p>
+  <h2 class="section-title">a few things,<br><span class="highlight">off the top of my head</span></h2>
+
+  <div class="flip-grid">
+    <div class="flip-card c1">
+      <div class="flip-inner">
+        <div class="flip-front"><span class="flip-emoji">😄</span><p>this one's easy</p></div>
+        <div class="flip-back"><p>your smile is honestly contagious, it's not fair to the rest of us</p></div>
+      </div>
+    </div>
+    <div class="flip-card c2">
+      <div class="flip-inner">
+        <div class="flip-front"><span class="flip-emoji">🤗</span><p>flip me</p></div>
+        <div class="flip-back"><p>you make people feel comfortable without even trying</p></div>
+      </div>
+    </div>
+    <div class="flip-card c3">
+      <div class="flip-inner">
+        <div class="flip-front"><span class="flip-emoji">💪</span><p>ok this one's real</p></div>
+        <div class="flip-back"><p>you handle way more than people realize, and you're still kind about it</p></div>
+      </div>
+    </div>
+    <div class="flip-card c4">
+      <div class="flip-inner">
+        <div class="flip-front"><span class="flip-emoji">🎨</span><p>tap here</p></div>
+        <div class="flip-back"><p>you notice tiny little details that everyone else just walks past</p></div>
+      </div>
+    </div>
+    <div class="flip-card c5">
+      <div class="flip-inner">
+        <div class="flip-front"><span class="flip-emoji">💛</span><p>last one</p></div>
+        <div class="flip-back"><p>you're loved a lot more than you probably think. that's just true</p></div>
+      </div>
+    </div>
+  </div>
+  <button class="next-btn" data-next="balloons">one more bit <span class="arrow">↓</span></button>
+</section>
+
+<!-- ================= BALLOON POP GAME ================= -->
+<section id="balloons" class="screen">
+  <p class="scribble-note">ok this part's just for fun, humor me</p>
+  <h2 class="section-title">pop these,<br>i hid something <span class="highlight">in there</span></h2>
+
+  <div class="progress-track">
+    <div class="progress-fill" id="balloon-progress"></div>
+  </div>
+
+  <div class="balloon-field" id="balloon-field"></div>
+
+  <p id="balloon-message" class="secret-message"></p>
+
+  <button class="next-btn hidden" id="to-cake-btn" data-next="cake">alright, cake time <span class="arrow">↓</span></button>
+</section>
+
+<!-- ================= CAKE / CANDLES ================= -->
+<section id="cake" class="screen">
+  <p class="scribble-note">make an actual wish, i'll wait</p>
+  <h2 class="section-title">blow these out</h2>
+
+  <div class="cake-wrap">
+    <svg id="cake-svg" viewBox="0 0 260 220" xmlns="http://www.w3.org/2000/svg">
+      <rect x="30" y="140" width="200" height="60" rx="6" fill="var(--marker-pink)" stroke="var(--ink)" stroke-width="4"/>
+      <rect x="45" y="95" width="170" height="55" rx="6" fill="var(--marker-yellow)" stroke="var(--ink)" stroke-width="4"/>
+      <rect x="65" y="55" width="130" height="48" rx="6" fill="var(--marker-blue)" stroke="var(--ink)" stroke-width="4"/>
+      <g class="candle" data-candle="1">
+        <rect x="85" y="30" width="8" height="28" rx="2" fill="var(--marker-green)" stroke="var(--ink)" stroke-width="2"/>
+        <circle class="flame" cx="89" cy="26" r="7" fill="var(--marker-yellow)" stroke="var(--ink)" stroke-width="2"/>
+      </g>
+      <g class="candle" data-candle="2">
+        <rect x="126" y="24" width="8" height="34" rx="2" fill="var(--marker-pink)" stroke="var(--ink)" stroke-width="2"/>
+        <circle class="flame" cx="130" cy="20" r="7" fill="var(--marker-yellow)" stroke="var(--ink)" stroke-width="2"/>
+      </g>
+      <g class="candle" data-candle="3">
+        <rect x="167" y="30" width="8" height="28" rx="2" fill="var(--marker-green)" stroke="var(--ink)" stroke-width="2"/>
+        <circle class="flame" cx="171" cy="26" r="7" fill="var(--marker-yellow)" stroke="var(--ink)" stroke-width="2"/>
+      </g>
+    </svg>
+  </div>
+
+  <button id="blow-btn" class="next-btn">blow 💨</button>
+  <p class="scribble-note" id="cake-hint">(tap the button)</p>
+</section>
+
+<!-- ================= FINAL MESSAGE ================= -->
+<section id="message" class="screen">
+  <div class="message-card">
+    <span class="tape tape-tl" aria-hidden="true"></span>
+    <span class="tape tape-br" aria-hidden="true"></span>
+    <h2 class="section-title">ok, for real now <span class="highlight">—</span></h2>
+    <p class="message-text">
+      happy birthday, Devashree. i know this page is a little silly and definitely not
+      professional-looking, but i wanted to make you something with my own two hands
+      instead of just texting "hbd" like everyone else does.
+    </p>
+    <p class="message-text">
+      i hope this year gives you everything you don't even know you're hoping for — good
+      people, less stress, more of those laughs that make your stomach hurt, and days that
+      actually feel like yours. you deserve a genuinely good year, Cutie, not just a good day.
+    </p>
+    <p class="message-text">
+      thanks for being you. don't change that part.
+    </p>
+    <p class="signature">— Jayu</p>
+    <button id="replay-btn" class="next-btn">one more time 🎉</button>
+  </div>
+
+  <footer class="footer">
+    made by <strong>Jayu</strong> <span class="footer-sub">(Jayostu Patil)</span>
+  </footer>
+</section>
 
 <script src="script.js"></script>
 </body>
